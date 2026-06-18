@@ -2,14 +2,14 @@ import { withZodCatch } from '@/common/utils'
 import { baseApi } from '../baseApi'
 import { moviesResponseSchema } from '../schemas'
 import type { MoviesListParams } from '../types'
+import { ApiEndpoints } from '@/common/constants'
 
 export const moviesApi = baseApi.injectEndpoints({
   endpoints: build => ({
     fetchNowPlayingMovies: build.query({
       query: ({ page = 1, language = 'ru-RU' }: MoviesListParams) => {
         return {
-          method: 'get',
-          url: `movie/nowplaying`,
+          url: ApiEndpoints.NowPlaying,
           params: { page, language },
         }
       },
@@ -18,8 +18,7 @@ export const moviesApi = baseApi.injectEndpoints({
     fetchPopularMovies: build.query({
       query: ({ page = 1, language = 'ru-RU' }: MoviesListParams) => {
         return {
-          method: 'get',
-          url: `movie/popular`,
+          url: ApiEndpoints.Popular,
           params: { page, language },
         }
       },
@@ -28,8 +27,7 @@ export const moviesApi = baseApi.injectEndpoints({
     fetchTopRatedMovies: build.query({
       query: ({ page = 1, language = 'ru-RU' }: MoviesListParams) => {
         return {
-          method: 'get',
-          url: `movie/top_rated`,
+          url: ApiEndpoints.TopRated,
           params: { page, language },
         }
       },
@@ -38,8 +36,7 @@ export const moviesApi = baseApi.injectEndpoints({
     fetchUpcomingMovies: build.query({
       query: ({ page = 1, language = 'ru-RU' }: MoviesListParams) => {
         return {
-          method: 'get',
-          url: `movie/upcoming`,
+          url: ApiEndpoints.Upcoming,
           params: { page, language },
         }
       },
