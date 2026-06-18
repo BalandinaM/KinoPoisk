@@ -14,7 +14,42 @@ export const moviesApi = baseApi.injectEndpoints({
       },
       responseSchema: moviesResponseSchema,
     }),
+    fetchPopularMovies: build.query({
+      query: ({ page = 1, language = 'ru-RU' }: MoviesListParams) => {
+        return {
+          method: 'get',
+          url: `movie/popular`,
+          params: { page, language },
+        }
+      },
+      responseSchema: moviesResponseSchema,
+    }),
+    fetchTopRatedMovies: build.query({
+      query: ({ page = 1, language = 'ru-RU' }: MoviesListParams) => {
+        return {
+          method: 'get',
+          url: `movie/top_rated`,
+          params: { page, language },
+        }
+      },
+      responseSchema: moviesResponseSchema,
+    }),
+    fetchUpcomingMovies: build.query({
+      query: ({ page = 1, language = 'ru-RU' }: MoviesListParams) => {
+        return {
+          method: 'get',
+          url: `movie/upcoming`,
+          params: { page, language },
+        }
+      },
+      responseSchema: moviesResponseSchema,
+    }),
   }),
 })
 
-export const { useFetchNowPlayingMoviesQuery } = moviesApi
+export const {
+  useFetchNowPlayingMoviesQuery,
+  useFetchPopularMoviesQuery,
+  useFetchTopRatedMoviesQuery,
+  useFetchUpcomingMoviesQuery,
+} = moviesApi
