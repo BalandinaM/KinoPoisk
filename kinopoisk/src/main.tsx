@@ -5,6 +5,7 @@ import { App } from './app/ui/App'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './app/model/store'
+import '@/common/styles/variables.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

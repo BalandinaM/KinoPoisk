@@ -1,16 +1,22 @@
-.container {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg);
+  height: var(--header-height);
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+/* .container {
   border-bottom: 1px solid black;
   padding: 0 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.list {
-  display: flex;
-  gap: 40px;
-}
-
-.activeLink {
-  font-weight: bold;
-}
+} */

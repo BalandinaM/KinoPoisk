@@ -1,0 +1,83 @@
+/* ===== Светлая тема (по умолчанию) ===== */
+:root {
+  /* Цвета */
+  --color-primary: #0d253f;
+  --color-primary-hover: #1a3a5c;
+  --color-secondary: #01b4e4;
+  --color-secondary-hover: #0190b8;
+  --color-accent: #90cea1;
+  --color-accent-hover: #70b887;
+
+  --color-bg: #f4f6f9;
+  --color-bg-card: #ffffff;
+  --color-bg-header: #0d253f;
+  --color-bg-paper: #ffffff;
+
+  --color-text: #0d253f;
+  --color-text-secondary: #5a6a7e;
+  --color-text-light: #a0aec0;
+  --color-text-white: #ffffff;
+
+  --color-border: #e2e8f0;
+  --color-shadow: rgba(13, 37, 63, 0.08);
+
+  /* Скругления */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Тени */
+  --shadow-sm: 0px 2px 4px rgba(13, 37, 63, 0.06);
+  --shadow-md: 0px 4px 12px rgba(13, 37, 63, 0.08);
+  --shadow-lg: 0px 8px 24px rgba(13, 37, 63, 0.12);
+
+  /* Шрифты */
+  --font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-xxl: 2rem;
+
+  /* Отступы */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* Header */
+  --header-height: 64px;
+  --header-bg: #0d253f;
+  --header-text: #ffffff;
+}
+
+/* ===== Тёмная тема ===== */
+[data-theme='dark'] {
+  --color-primary: #01b4e4;
+  --color-primary-hover: #0190b8;
+  --color-secondary: #90cea1;
+  --color-secondary-hover: #70b887;
+  --color-accent: #01b4e4;
+  --color-accent-hover: #0190b8;
+
+  --color-bg: #0d1a2b;
+  --color-bg-card: #1a2a3f;
+  --color-bg-header: #0d1a2b;
+  --color-bg-paper: #1a2a3f;
+
+  --color-text: #ffffff;
+  --color-text-secondary: #a0b8cc;
+  --color-text-light: #5a7a8e;
+  --color-text-white: #ffffff;
+
+  --color-border: #2a3f5a;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+
+  --shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0px 8px 32px rgba(0, 0, 0, 0.5);
+}

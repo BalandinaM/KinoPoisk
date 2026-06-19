@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.link {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--header-text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  opacity: 1;
+}
+
+.activeLink {
+  background-color: rgba(255, 255, 255, 0.12);
+  font-weight: 600;
+  opacity: 1;
+}

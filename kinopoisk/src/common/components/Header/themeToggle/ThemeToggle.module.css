@@ -1,0 +1,18 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--header-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--font-lg);
+}
+
+.toggle:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
