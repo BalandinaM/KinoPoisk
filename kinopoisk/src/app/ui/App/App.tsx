@@ -3,6 +3,7 @@ import './App.css'
 import { Header } from '@/common/components/Header'
 import { Toaster } from 'sonner'
 import { useTheme } from '@/common/hooks/useTheme'
+import { Footer } from '@/common/components/Footer'
 
 export const App = () => {
   const { mode } = useTheme()
@@ -10,7 +11,10 @@ export const App = () => {
   return (
     <div className="app" data-theme={mode}>
       <Header />
-      <Routing />
+      <main className="main-content">
+        <Routing />
+      </main>
+      <Footer />
       <Toaster richColors position="top-right" closeButton={true} />
     </div>
   )
