@@ -1,4 +1,4 @@
-import { PageNotFound } from '@/common/components/PageNotFound'
+import { PageNotFound } from '@/common/components/pageNotFound'
 import { Path } from '@/common/constants'
 import { CategoryMovies } from '@/features/categoryMovies/ui'
 import { Favorites } from '@/features/favorites/ui'

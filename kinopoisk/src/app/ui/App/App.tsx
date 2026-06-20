@@ -1,9 +1,9 @@
 import { Routing } from '@/app/routing'
 import './App.css'
-import { Header } from '@/common/components/Header'
+import { Header } from '@/common/components/header'
 import { Toaster } from 'sonner'
 import { useTheme } from '@/common/hooks/useTheme'
-import { Footer } from '@/common/components/Footer'
+import { Footer } from '@/common/components/footer'
 
 export const App = () => {
   const { mode } = useTheme()

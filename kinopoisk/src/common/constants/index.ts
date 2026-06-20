@@ -1,17 +1,26 @@
 export const Path = {
   Main: '/',
   CategoryMovies: '/movies',
-  FilteredMovies: '/filtered-movies',
+  FilteredMovies: '/filtered',
   Search: '/search',
   Favorites: '/favorites',
   NotFound: '*',
-} as const
+}
 
-// пока не использую, но пусть будет, вдруг пригодится
 export const ApiEndpoints = {
+  NowPlaying: '/movie/now_playing',
   Popular: '/movie/popular',
   TopRated: '/movie/top_rated',
   Upcoming: '/movie/upcoming',
-  NowPlaying: '/movie/now_playing',
+
   Search: '/search/movie',
-} as const
+  Discover: '/discover/movie',
+
+  Movie: '/movie',
+  Credits: (id: number) => `/movie/${id}/credits`,
+  Similar: (id: number) => `/movie/${id}/similar`,
+
+  Genres: '/genre/movie/list',
+
+  Configuration: '/configuration',
+}
