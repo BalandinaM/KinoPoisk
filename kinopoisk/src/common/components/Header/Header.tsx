@@ -5,10 +5,12 @@ import { ThemeToggle } from './themeToggle/ThemeToggle'
 
 export const Header = () => {
   return (
-    <header className={s.header}>
-      <Logo />
-      <NavMenu />
-      <ThemeToggle />
-    </header>
+    <div className={s.container}>
+      <header className={s.header}>
+        <Logo />
+        <NavMenu />
+        <ThemeToggle />
+      </header>
+    </div>
   )
 }

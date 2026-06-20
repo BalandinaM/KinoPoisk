@@ -1,0 +1,6 @@
+.logoWrapper {
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
