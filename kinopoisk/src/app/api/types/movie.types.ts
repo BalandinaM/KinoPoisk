@@ -49,6 +49,11 @@ export type SearchParams = BaseParams & {
   primary_release_year?: number
 }
 
+// ===== Для выбора категории  =====
+export type CategoryParams = BaseParams & {
+  category: string
+}
+
 // ===== Для фильтрации (discover) =====
 export type DiscoverParams = BaseParams & {
   sort_by?: SortOption

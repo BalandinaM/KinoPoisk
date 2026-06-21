@@ -1,6 +1,6 @@
 export const Path = {
   Main: '/',
-  CategoryMovies: '/movies',
+  CategoryMovies: '/movie/:category',
   FilteredMovies: '/filtered',
   Search: '/search',
   Favorites: '/favorites',
@@ -24,3 +24,10 @@ export const ApiEndpoints = {
 
   Configuration: '/configuration',
 }
+
+// export const MoviesCategory = {
+//   NowPlaying: 'now_playing',
+//   Popular: 'popular',
+//   TopRated: 'top_rated',
+//   Upcoming: 'upcoming',
+// }

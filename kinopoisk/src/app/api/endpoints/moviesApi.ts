@@ -1,7 +1,7 @@
 import { withZodCatch } from '@/common/utils'
 import { baseApi } from '../baseApi'
 import { moviesResponseSchema } from '../schemas'
-import type { MoviesListParams } from '../types'
+import type { CategoryParams, MoviesListParams } from '../types'
 import { ApiEndpoints } from '@/common/constants'
 
 export const moviesApi = baseApi.injectEndpoints({
@@ -42,6 +42,19 @@ export const moviesApi = baseApi.injectEndpoints({
       },
       ...withZodCatch(moviesResponseSchema),
     }),
+    fetchMoviesByCategory: build.query({
+      query: ({
+        category = 'popular',
+        page = 1,
+        language = 'ru-RU',
+      }: CategoryParams) => {
+        return {
+          url: `${ApiEndpoints.Movie}/${category}`,
+          params: { page, language },
+        }
+      },
+      ...withZodCatch(moviesResponseSchema),
+    }),
   }),
 })
 
@@ -50,4 +63,5 @@ export const {
   useFetchPopularMoviesQuery,
   useFetchTopRatedMoviesQuery,
   useFetchUpcomingMoviesQuery,
+  useFetchMoviesByCategoryQuery,
 } = moviesApi

@@ -6,6 +6,7 @@ import {
 } from '@/app/api/endpoints/moviesApi'
 import { MoviesSection } from '@/common/components/moviesSection'
 import s from './MainPage.module.css'
+import { ApiEndpoints } from '@/common/constants'
 
 export const MainPage = () => {
   const { data: nowPlaying } = useFetchNowPlayingMoviesQuery({
@@ -30,25 +31,25 @@ export const MainPage = () => {
       <MoviesSection
         sectionTitle={'Сейчас в прокате'}
         data={nowPlaying?.results}
-        link="#"
+        link={ApiEndpoints.NowPlaying}
         limit={6}
       />
       <MoviesSection
         sectionTitle={'Популярные фильмы'}
         data={popular?.results}
-        link="#"
+        link={ApiEndpoints.Popular}
         limit={6}
       />
       <MoviesSection
         sectionTitle={'С высоким рейтингом'}
         data={topRated?.results}
-        link="#"
+        link={ApiEndpoints.TopRated}
         limit={6}
       />
       <MoviesSection
         sectionTitle={'Скоро в прокате'}
         data={upcoming?.results}
-        link="#"
+        link={ApiEndpoints.Upcoming}
         limit={6}
       />
     </div>

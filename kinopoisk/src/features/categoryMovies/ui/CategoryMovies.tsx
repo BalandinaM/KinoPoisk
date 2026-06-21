@@ -1,5 +1,19 @@
+import { useFetchMoviesByCategoryQuery } from '@/app/api/endpoints/moviesApi'
+import { MoviesSection } from '@/common/components/moviesSection'
+import { useParams } from 'react-router-dom'
+
 export const CategoryMovies = () => {
-  return <div>CategoryMovies</div>
+  const { category } = useParams<{ category: string }>()
+
+  const { data } = useFetchMoviesByCategoryQuery({
+    category: category || 'popular',
+    page: 1,
+    language: 'ru-RU',
+  })
+
+  return (
+    <MoviesSection sectionTitle={category || 'popular'} data={data?.results} />
+  )
 }
-//должен при переходе считывать параметры из адресной строки и отрисовывать нужный список фильмов,
-// барть либо из кэша либо запрос на сервер
+
+//сслыка не активна при переходе с главной...
