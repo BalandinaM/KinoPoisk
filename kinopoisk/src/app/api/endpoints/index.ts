@@ -1,1 +1,2 @@
-export { moviesApi } from './moviesApi';
+export { configApi } from './configApi'
+export { moviesApi } from './moviesApi'
