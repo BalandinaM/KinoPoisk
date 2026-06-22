@@ -3,10 +3,10 @@
   /* Цвета */
   --color-primary: #0d253f;
   --color-primary-hover: #1a3a5c;
-  --color-secondary: #01b4e4;
-  --color-secondary-hover: #0190b8;
-  --color-accent: #90cea1;
-  --color-accent-hover: #70b887;
+  --color-secondary: #90cea1;
+  --color-secondary-hover: #70b887;
+  --color-accent: #01b4e4;
+  --color-accent-hover: #0190b8;
 
   --color-bg: #f4f6f9;
   --color-bg-card: #ffffff;
@@ -53,6 +53,8 @@
   --header-height: 64px;
   --header-bg: #0d253f;
   --header-text: #ffffff;
+
+  --transition: all 0.3s ease;
 }
 
 /* ===== Тёмная тема ===== */

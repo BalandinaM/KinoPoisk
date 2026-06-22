@@ -1,5 +1,94 @@
-.list {
+/* .list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+} */
+
+.section {
+  margin-bottom: 40px;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+}
+
+.title {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* это надо вообще вынести в отдельный компонент, она мне пригодится много где */
+.viewMore {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: inline-flex;
+}
+
+.viewMore:hover {
+  text-decoration: none;
+  background-color: var(--color-bg-card);
+}
+
+.viewMore:active {
+  color: var(--color-text-secondary);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Адаптив */
+/* @media (max-width: 1200px) {
+  .list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+} */

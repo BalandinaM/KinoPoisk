@@ -3,11 +3,11 @@ import { NavLink, useLocation } from 'react-router-dom'
 import s from './NavMenu.module.css'
 
 const navItems = [
-  { to: Path.Main, label: 'Main' },
-  { to: Path.CategoryMovies, label: 'Category Movies' },
-  { to: Path.FilteredMovies, label: 'Filtered Movies' },
-  { to: Path.Search, label: 'Search' },
-  { to: Path.Favorites, label: 'Favorites' },
+  { to: Path.Main, label: 'Главная' },
+  { to: Path.CategoryMovies, label: 'Фильмы по категориям' },
+  { to: Path.FilteredMovies, label: 'Отфильтровать фильмы' },
+  { to: Path.Search, label: 'Поиск' },
+  { to: Path.Favorites, label: 'Избранное' },
 ]
 
 export const NavMenu = () => {
