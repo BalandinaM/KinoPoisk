@@ -9,10 +9,10 @@ export const Path = {
 }
 
 export const ApiEndpoints = {
-  NowPlaying: '/movies/now_playing',
-  Popular: '/movies/popular',
-  TopRated: '/movies/top_rated',
-  Upcoming: '/movies/upcoming',
+  NowPlaying: '/movie/now_playing',
+  Popular: '/movie/popular',
+  TopRated: '/movie/top_rated',
+  Upcoming: '/movie/upcoming',
 
   Search: '/search/movie',
   Discover: '/discover/movie',
@@ -26,9 +26,9 @@ export const ApiEndpoints = {
   Configuration: '/configuration',
 }
 
-// export const MoviesCategory = {
-//   NowPlaying: 'now_playing',
-//   Popular: 'popular',
-//   TopRated: 'top_rated',
-//   Upcoming: 'upcoming',
-// }
+export const MoviesCategory = {
+  NowPlaying: 'now_playing',
+  Popular: 'popular',
+  TopRated: 'top_rated',
+  Upcoming: 'upcoming',
+}
