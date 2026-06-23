@@ -11,12 +11,10 @@ export const movieApi = baseApi.injectEndpoints({
         movie_id,
         language = 'ru-RU',
         append_to_response,
-      }: DetailsParams) => {
-        return {
-          url: `${ApiEndpoints.Movie}/${movie_id}`,
-          params: { language, append_to_response },
-        }
-      },
+      }: DetailsParams) => ({
+        url: `${ApiEndpoints.Movie}/${movie_id}`,
+        params: { language, append_to_response },
+      }),
       ...withZodCatch(movieDetailsSchema),
     }),
   }),

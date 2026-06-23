@@ -35,7 +35,7 @@ export const MoviePreview = ({ data }: Props) => {
 
     return (
       <article key={data.id} className={s.card}>
-        <Link to="#">
+        <Link to={`/movie/${data.id}`} className={s.link}>
           <img
             src={posterUrl}
             alt={data.title}

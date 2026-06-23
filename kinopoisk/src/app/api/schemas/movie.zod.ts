@@ -59,7 +59,9 @@ export const moviesResponseSchema = z.object({
 
 // ===== Схема для детальной информации о фильме =====
 
-export const movieDetailsSchema = movieSchema.extend({
+export const movieDetailsSchema = z.object({
+  adult: z.boolean(),
+  backdrop_path: z.string().nullable(),
   belongs_to_collection: z
     .object({
       id: z.number(),
@@ -69,17 +71,29 @@ export const movieDetailsSchema = movieSchema.extend({
     })
     .nullable(),
   budget: z.number(),
-  genres: z.array(genreSchema),
+  genres: z.array(genreSchema), // ← ОБЯЗАТЕЛЬНО массив (не optional!)
   homepage: z.string().nullable(),
+  id: z.number(),
   imdb_id: z.string().nullable(),
   origin_country: z.array(z.string()),
+  original_language: z.string(),
+  original_title: z.string(),
+  overview: z.string(),
+  popularity: z.number(),
+  poster_path: z.string().nullable(),
   production_companies: z.array(productionCompanySchema),
   production_countries: z.array(productionCountrySchema),
+  release_date: z.string(),
   revenue: z.number(),
-  runtime: z.number().nullable(),
+  runtime: z.number(),
+  softcore: z.boolean().optional(), // ← если это поле не всегда есть
   spoken_languages: z.array(spokenLanguageSchema),
   status: z.string(),
   tagline: z.string().nullable(),
+  title: z.string(),
+  video: z.boolean(),
+  vote_average: z.number(),
+  vote_count: z.number(),
 })
 
 // ===== Схема для актёра =====
