@@ -1,0 +1,145 @@
+.card {
+  position: relative;
+  list-style: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+  background-color: var(--color-bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.title {
+  padding: var(--space-sm) var(--space-sm) var(--space-md);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+/* ===== Рейтинг ===== */
+.rating {
+  position: absolute;
+  bottom: 56px;
+  right: var(--space-sm);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: var(--font-xs);
+  font-weight: 700;
+  color: var(--color-text-white);
+  background-color: var(--rating-color, #666);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Цвета рейтинга */
+.rating[data-rating='low'] {
+  --rating-color: #e74c3c; /* красный */
+}
+
+.rating[data-rating='medium'] {
+  --rating-color: #f39c12; /* оранжевый */
+}
+
+.rating[data-rating='high'] {
+  --rating-color: #2ecc71; /* зелёный */
+}
+
+/* ===== Кнопка избранного ===== */
+.favoriteButton {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--color-text-white);
+  cursor: pointer;
+  transition: var(--transition);
+  opacity: 0;
+  transform: scale(0.8);
+  backdrop-filter: blur(4px);
+}
+
+.card:hover .favoriteButton {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.favoriteButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.favoriteButton.active {
+  opacity: 1;
+  transform: scale(1);
+  background-color: rgba(231, 76, 60, 0.8);
+}
+
+.favoriteButton.active:hover {
+  background-color: rgba(231, 76, 60, 0.9);
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 768px) {
+  .rating {
+    width: 30px;
+    height: 30px;
+    font-size: var(--font-xs);
+    bottom: 48px;
+  }
+
+  .favoriteButton {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rating {
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+    bottom: 44px;
+    right: var(--space-xs);
+  }
+
+  .favoriteButton {
+    width: 24px;
+    height: 24px;
+    top: var(--space-xs);
+    right: var(--space-xs);
+  }
+
+  .title {
+    font-size: var(--font-xs);
+    padding: var(--space-xs) var(--space-xs) var(--space-sm);
+  }
+}

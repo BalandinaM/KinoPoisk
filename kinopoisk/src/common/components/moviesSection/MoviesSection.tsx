@@ -23,11 +23,11 @@ export const MoviesSection = ({ sectionTitle, link, data, limit }: Props) => {
           </Link>
         )}
       </div>
-      <ul className={s.list}>
+      <div className={s.list}>
         {moviesToShow?.map(movie => {
           return <MoviePreview data={movie} />
         })}
-      </ul>
+      </div>
     </section>
   )
 }
