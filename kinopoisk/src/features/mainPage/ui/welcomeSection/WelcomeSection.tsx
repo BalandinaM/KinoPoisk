@@ -2,6 +2,7 @@ import type { Movie } from '@/app/api/types'
 import s from './WelcomeSection.module.css'
 import { useImageUrl } from '@/common/hooks'
 import { useState } from 'react'
+import { SearchInput } from '@/features/search/ui'
 
 type Props = {
   movies: Movie[]
@@ -9,7 +10,6 @@ type Props = {
 
 export const WelcomeSection = ({ movies }: Props) => {
   const { getBackdropUrl } = useImageUrl()
-  console.log(movies)
 
   const [randomMovie] = useState(() => {
     const randomIndex = Math.floor(Math.random() * movies.length)
@@ -25,7 +25,7 @@ export const WelcomeSection = ({ movies }: Props) => {
 
   return (
     <div className={s.section} style={backgroundStyle}>
-      WelcomeSection
+      <SearchInput />
     </div>
   )
 }
