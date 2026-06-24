@@ -6,12 +6,12 @@ import s from './MoviePreview.module.css'
 import { Link } from 'react-router-dom'
 
 type Props = {
-  data: Movie
+  movie: Movie
 }
 
-export const MoviePreview = ({ data }: Props) => {
+export const MoviePreview = ({ movie }: Props) => {
   const { getPosterUrl, isLoading } = useImageUrl()
-  const { isFavorite, toggleFavorite } = useFavorite(data.id)
+  const { isFavorite, toggleFavorite } = useFavorite(movie.id)
 
   const getRatingColor = (rating: number) => {
     if (rating < 5) return 'low'
@@ -19,41 +19,41 @@ export const MoviePreview = ({ data }: Props) => {
     return 'high'
   }
 
-  if (isLoading || !data) {
+  if (isLoading || !movie) {
     return <div>Загрузка...</div>
   }
 
   const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
     toggleFavorite({
-      id: data.id,
-      title: data.title,
-      posterUrl: data.poster_path,
-      voteAverage: data.vote_average,
+      id: movie.id,
+      title: movie.title,
+      posterUrl: movie.poster_path,
+      voteAverage: movie.vote_average,
     })
   }
 
-  const posterUrl = getPosterUrl(data.poster_path, 'w342')
+  const posterUrl = getPosterUrl(movie.poster_path, 'w342')
 
   return (
-    <article key={data.id} className={s.card}>
-      <Link to={`/movie/${data.id}`} className={s.link}>
+    <article key={movie.id} className={s.card}>
+      <Link to={`/movie/${movie.id}`} className={s.link}>
         <div className={s.imageWrapper}>
           <img
             src={posterUrl}
-            alt={data.title}
+            alt={movie.title}
             width={180}
             height={270}
             className={s.image}
           />
           <div
             className={s.rating}
-            data-rating={getRatingColor(data.vote_average)}
+            movie-rating={getRatingColor(movie.vote_average)}
           >
-            {data.vote_average.toFixed(1)}
+            {movie.vote_average.toFixed(1)}
           </div>
         </div>
-        <h4 className={s.title}>{data.title}</h4>
+        <h4 className={s.title}>{movie.title}</h4>
       </Link>
       <button
         onClick={handleFavoriteClick}

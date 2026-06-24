@@ -1,1 +1,2 @@
-export * from './MainPage';
+export { MainPage } from './MainPage'
+export { WelcomeSection } from './welcomeSection/index'

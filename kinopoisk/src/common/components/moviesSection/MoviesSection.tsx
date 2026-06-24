@@ -6,12 +6,12 @@ import { MoviePreview } from './moviePreview'
 type Props = {
   sectionTitle: string
   link?: string
-  data?: Movie[]
+  movies?: Movie[]
   limit?: number
 }
 
-export const MoviesSection = ({ sectionTitle, link, data, limit }: Props) => {
-  const moviesToShow = limit ? data?.slice(0, limit) : data
+export const MoviesSection = ({ sectionTitle, link, movies, limit }: Props) => {
+  const moviesToShow = limit ? movies?.slice(0, limit) : movies
 
   return (
     <section className={s.section}>
@@ -25,7 +25,7 @@ export const MoviesSection = ({ sectionTitle, link, data, limit }: Props) => {
       </div>
       <div className={s.list}>
         {moviesToShow?.map(movie => {
-          return <MoviePreview data={movie} />
+          return <MoviePreview movie={movie} />
         })}
       </div>
     </section>

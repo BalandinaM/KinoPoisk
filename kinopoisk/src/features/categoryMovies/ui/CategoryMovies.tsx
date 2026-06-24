@@ -5,14 +5,17 @@ import { useParams } from 'react-router-dom'
 export const CategoryMovies = () => {
   const { category } = useParams<{ category: string }>()
 
-  const { data } = useFetchMoviesByCategoryQuery({
+  const { data: movies } = useFetchMoviesByCategoryQuery({
     category: category || 'popular',
     page: 1,
     language: 'ru-RU',
   })
 
   return (
-    <MoviesSection sectionTitle={category || 'popular'} data={data?.results} />
+    <MoviesSection
+      sectionTitle={category || 'popular'}
+      movies={movies?.results}
+    />
   )
 }
 
