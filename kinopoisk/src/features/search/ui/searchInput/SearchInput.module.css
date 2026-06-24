@@ -1,0 +1,88 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: var(--radius-md);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+}
+
+.wrapper:focus-within {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(1, 180, 228, 0.2);
+}
+
+.input {
+  flex: 1;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: var(--font-sm);
+  font-family: var(--font-family);
+  color: var(--color-text-white);
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--font-sm);
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: var(--color-accent);
+  color: var(--color-text-white);
+  border: none;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  height: 100%;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 768px) {
+  .input {
+    padding: 6px 12px;
+    font-size: var(--font-xs);
+  }
+
+  .button {
+    padding: 6px 14px;
+    font-size: var(--font-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    border-radius: var(--radius-sm);
+  }
+
+  .input {
+    padding: 6px 10px;
+    font-size: var(--font-xs);
+  }
+
+  .button {
+    padding: 6px 12px;
+    font-size: var(--font-xs);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+}

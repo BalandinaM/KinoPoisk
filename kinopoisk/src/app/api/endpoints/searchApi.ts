@@ -16,4 +16,4 @@ export const searchApi = baseApi.injectEndpoints({
   }),
 })
 
-export const { useLazySearchMoviesQuery } = searchApi
+export const { useSearchMoviesQuery } = searchApi

@@ -5,6 +5,7 @@ import { Favorites } from '@/features/favorites/ui'
 import { FilteredMovies } from '@/features/filteredMovies/ui'
 import { MainPage } from '@/features/mainPage/ui'
 import { Movie } from '@/features/movie'
+import { SearchPage } from '@/features/search/ui'
 import { Routes, Route } from 'react-router-dom'
 
 export const Routing = () => {
@@ -13,8 +14,7 @@ export const Routing = () => {
       <Route path={Path.Main} element={<MainPage />} />
       <Route path={Path.CategoryMovies} element={<CategoryMovies />} />
       <Route path={Path.FilteredMovies} element={<FilteredMovies />} />
-      {/* <Route path={Path.Search} element={<Search />} /> */}
-      {/* пока убрала */}
+      <Route path={Path.Search} element={<SearchPage />} />
       <Route path={Path.Favorites} element={<Favorites />} />
       <Route path={Path.Movie} element={<Movie />} />
       <Route path={Path.NotFound} element={<PageNotFound />} />
