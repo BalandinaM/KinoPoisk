@@ -2,7 +2,7 @@ import type { Movie } from '@/app/api/types'
 import s from './WelcomeSection.module.css'
 import { useImageUrl } from '@/common/hooks'
 import { useState } from 'react'
-import { SearchInput } from '@/features/search/ui'
+import { SearchInput } from '@/features/search/ui/searchInput'
 
 type Props = {
   movies: Movie[]
@@ -24,8 +24,17 @@ export const WelcomeSection = ({ movies }: Props) => {
   }
 
   return (
-    <div className={s.section} style={backgroundStyle}>
-      <SearchInput />
-    </div>
+    <section className={s.section} style={backgroundStyle}>
+      <div className={s.content}>
+        <p className={s.welcome}>WELCOME</p>
+        <h1 className={s.title}>Ищете что посмотреть?</h1>
+        <p className={s.subtitle}>Начните поиск с TMDB</p>
+        <SearchInput />
+      </div>
+    </section>
+    // <div className={s.section} style={backgroundStyle}>
+    //   <p>welcome</p>
+    //   <SearchInput title={'Ищете что посмотреть? Начните поиск с TMDB'} />
+    // </div>
   )
 }
