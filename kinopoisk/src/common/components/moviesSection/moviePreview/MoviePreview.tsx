@@ -48,7 +48,7 @@ export const MoviePreview = ({ movie }: Props) => {
           />
           <div
             className={s.rating}
-            movie-rating={getRatingColor(movie.vote_average)}
+            data-rating={getRatingColor(movie.vote_average)}
           >
             {movie.vote_average.toFixed(1)}
           </div>
