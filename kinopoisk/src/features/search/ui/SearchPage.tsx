@@ -2,6 +2,7 @@ import { useSearchMoviesQuery } from '@/app/api/endpoints/searchApi'
 import { MoviesSection } from '@/common/components/moviesSection'
 import { useSearchParams } from 'react-router-dom'
 import { SearchInput } from './searchInput'
+import s from './SearchPage.module.css'
 
 export const SearchPage = () => {
   const [searchParams] = useSearchParams()
@@ -13,7 +14,7 @@ export const SearchPage = () => {
   )
 
   return (
-    <div>
+    <div className={s.wrap}>
       {isLoading && <p>Загрузка...</p>}
       <SearchInput />
       {searchResult && (
