@@ -1,44 +1,12 @@
-import {
-  useFetchNowPlayingMoviesQuery,
-  useFetchPopularMoviesQuery,
-  useFetchTopRatedMoviesQuery,
-  useFetchUpcomingMoviesQuery,
-} from '@/app/api/endpoints/moviesApi'
 import { MoviesSection } from '@/common/components/moviesSection'
 import s from './MainPage.module.css'
 import { MoviesCategory } from '@/common/constants'
 import { WelcomeSection } from './welcomeSection'
+import { useMoviesCategories } from './hooks'
 
 export const MainPage = () => {
-  const { data: nowPlaying, isLoading: isLoadingNowPlaying } =
-    useFetchNowPlayingMoviesQuery({
-      page: 1,
-      language: 'ru-RU',
-    })
-
-  const { data: popular, isLoading: isLoadingPopular } =
-    useFetchPopularMoviesQuery({
-      page: 1,
-      language: 'ru-RU',
-    })
-
-  const { data: topRated, isLoading: isLoadingTopRated } =
-    useFetchTopRatedMoviesQuery({
-      page: 1,
-      language: 'ru-RU',
-    })
-
-  const { data: upcoming, isLoading: isLoadingUpcoming } =
-    useFetchUpcomingMoviesQuery({
-      page: 1,
-      language: 'ru-RU',
-    })
-
-  const isLoading =
-    isLoadingNowPlaying ||
-    isLoadingPopular ||
-    isLoadingTopRated ||
-    isLoadingUpcoming
+  const { nowPlaying, popular, topRated, upcoming, isLoading } =
+    useMoviesCategories()
 
   if (isLoading) {
     return <div className={s.loader}>Загрузка...</div>

@@ -1,0 +1,1 @@
+export { useMoviesCategories } from './useMoviesCategories'
