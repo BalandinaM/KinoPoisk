@@ -4,7 +4,7 @@ import s from './NavMenu.module.css'
 
 const navItems = [
   { to: Path.Main, label: 'Главная' },
-  { to: Path.CategoryMovies, label: 'Фильмы по категориям' },
+  { to: Path.PopularMovies, label: 'Фильмы по категориям' },
   { to: Path.FilteredMovies, label: 'Отфильтровать фильмы' },
   { to: Path.Search, label: 'Поиск' },
   { to: Path.Favorites, label: 'Избранное' },
@@ -17,8 +17,8 @@ export const NavMenu = () => {
       <ul className={s.list}>
         {navItems.map(item => {
           const isActive =
-            item.to === '/movie/:category'
-              ? location.pathname.startsWith('/movie/')
+            item.to === Path.PopularMovies
+              ? location.pathname.startsWith('/movies/')
               : location.pathname === item.to
           return (
             <li key={item.to}>

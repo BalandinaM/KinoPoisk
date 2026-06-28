@@ -1,6 +1,7 @@
 export const Path = {
   Main: '/',
   CategoryMovies: '/movies/:category',
+  PopularMovies: '/movies/popular',
   FilteredMovies: '/filtered',
   Search: '/search',
   Favorites: '/favorites',
@@ -31,4 +32,11 @@ export const MoviesCategory = {
   Popular: 'popular',
   TopRated: 'top_rated',
   Upcoming: 'upcoming',
+}
+
+export const categoryTitles = {
+  popular: 'Популярные фильмы',
+  now_playing: 'Сейчас в прокате',
+  top_rated: 'Фильмы с высоким рейтингом',
+  upcoming: 'Скоро в прокате',
 }

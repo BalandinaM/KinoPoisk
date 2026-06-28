@@ -3,14 +3,23 @@ import s from './MoviesSection.module.css'
 import type { Movie } from '@/app/api/types'
 import { MoviePreview } from './moviePreview'
 
+type Variant = 'mainPage' | 'default'
+
 type Props = {
   sectionTitle: string
   link?: string
   movies?: Movie[]
   limit?: number
+  variant?: Variant
 }
 
-export const MoviesSection = ({ sectionTitle, link, movies, limit }: Props) => {
+export const MoviesSection = ({
+  sectionTitle,
+  link,
+  movies,
+  limit,
+  variant = 'default',
+}: Props) => {
   const moviesToShow = limit ? movies?.slice(0, limit) : movies
 
   return (
@@ -23,7 +32,9 @@ export const MoviesSection = ({ sectionTitle, link, movies, limit }: Props) => {
           </Link>
         )}
       </div>
-      <div className={s.list}>
+      <div
+        className={`${s.list} ${variant === 'mainPage' ? s.listMainPage : ''}`}
+      >
         {moviesToShow?.map(movie => {
           return <MoviePreview movie={movie} />
         })}
