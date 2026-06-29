@@ -3,7 +3,7 @@ import s from './MainPage.module.css'
 import { MoviesCategory } from '@/common/constants'
 import { WelcomeSection } from './welcomeSection'
 import { useMoviesCategories } from './hooks'
-import { getCategoryTitle } from '@/features/categoryMovies/api/constants'
+import { getCategoryTitle } from '@/features/categoryPage/api/constants'
 
 export const MainPage = () => {
   const { nowPlaying, popular, topRated, upcoming, isLoading } =

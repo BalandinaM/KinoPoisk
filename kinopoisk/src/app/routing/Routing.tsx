@@ -1,6 +1,6 @@
 import { PageNotFound } from '@/common/components/pageNotFound'
 import { Path } from '@/common/constants'
-import { CategoryMovies } from '@/features/categoryMovies/ui'
+import { CategoryPage } from '@/features/categoryPage/ui/CategoryPage'
 import { Favorites } from '@/features/favorites/ui'
 import { FilteredMovies } from '@/features/filteredMovies/ui'
 import { MainPage } from '@/features/mainPage/ui'
@@ -12,7 +12,7 @@ export const Routing = () => {
   return (
     <Routes>
       <Route path={Path.Main} element={<MainPage />} />
-      <Route path={Path.CategoryMovies} element={<CategoryMovies />} />
+      <Route path={Path.CategoryMovies} element={<CategoryPage />} />
       <Route path={Path.FilteredMovies} element={<FilteredMovies />} />
       <Route path={Path.Search} element={<SearchPage />} />
       <Route path={Path.Favorites} element={<Favorites />} />

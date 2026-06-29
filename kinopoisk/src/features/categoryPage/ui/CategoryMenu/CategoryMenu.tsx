@@ -9,7 +9,11 @@ const categoryItems = [
   { to: MoviesCategory.Upcoming, label: 'Скоро в прокате' },
 ]
 
-export const CategoryMenu = () => {
+type Props = {
+  setCurrentPage: (arg: number) => void
+}
+
+export const CategoryMenu = ({ setCurrentPage }: Props) => {
   const { category } = useParams<{ category: string }>()
 
   return (
@@ -19,7 +23,7 @@ export const CategoryMenu = () => {
           const isActive = category === item.to
 
           return (
-            <li key={item.to}>
+            <li key={item.to} onClick={() => setCurrentPage(1)}>
               <NavLink
                 to={`/movies/${item.to}`}
                 className={`${s.link} ${isActive ? s.activeLink : ''}`}

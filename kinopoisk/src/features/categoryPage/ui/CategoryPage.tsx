@@ -1,15 +1,14 @@
 import { useFetchMoviesByCategoryQuery } from '@/app/api/endpoints/moviesApi'
-import { MoviesSection } from '@/common/components/moviesSection'
 import { useParams } from 'react-router-dom'
 import { CategoryMenu } from './CategoryMenu/CategoryMenu'
-import s from './CategoryMovies.module.css'
+import s from './CategoryPage.module.css'
 import { getCategoryTitle } from '../api/constants'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Pagination } from '@/common/components/pagination/Pagination'
+import { MoviesSection } from '@/common/components/moviesSection'
 
-export const CategoryMovies = () => {
+export const CategoryPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
-  console.log(currentPage)
   const { category } = useParams<{ category: string }>()
 
   const { data: movies, isLoading } = useFetchMoviesByCategoryQuery({
@@ -28,7 +27,7 @@ export const CategoryMovies = () => {
 
   return (
     <div className={s.wrap}>
-      <CategoryMenu />
+      <CategoryMenu setCurrentPage={setCurrentPage} />
       <MoviesSection
         sectionTitle={getCategoryTitle(category || 'popular')}
         movies={movies?.results}

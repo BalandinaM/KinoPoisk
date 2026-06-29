@@ -1,1 +1,0 @@
-export { CategoryMovies } from './CategoryMovies';
