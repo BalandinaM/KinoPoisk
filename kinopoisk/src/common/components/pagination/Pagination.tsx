@@ -16,13 +16,6 @@ export const Pagination = ({
 
   const pages = getPaginationPages(currentPage, pagesCount)
 
-  //   const handlePageChange = (page: number) => {
-  //     if (page !== currentPage) {
-  //       setCurrentPage(Number(page))
-  //       window.scrollTo({ top: 0, behavior: 'smooth' })
-  //     }
-  //   }
-
   return (
     <div className={s.pagination}>
       {pages.map((page, idx) =>
@@ -39,7 +32,6 @@ export const Pagination = ({
                 : s.pageButton
             }
             onClick={() => page !== currentPage && setCurrentPage(Number(page))}
-            // onClick={() => handlePageChange()}
             disabled={page === currentPage}
             type="button"
           >
