@@ -1,4 +1,7 @@
 export { errorToast } from './errorToast'
+export { getCategoryTitle } from './getCategoryTitle'
+export { getPaginationPages } from './getPaginationPage'
 export { handleErrors } from './handleErrors'
+export { isTmdbError } from './isTmdbErrors'
 export { successToast } from './successToast'
 export { withZodCatch } from './withZodCatch'
