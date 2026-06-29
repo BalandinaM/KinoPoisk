@@ -1,4 +1,4 @@
-import type { Movie } from '@/app/api/types'
+import type { FavoriteMovie, Movie } from '@/app/api/types'
 import { useFavorite, useImageUrl } from '@/common/hooks'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined'
@@ -6,12 +6,12 @@ import s from './MoviePreview.module.css'
 import { Link } from 'react-router-dom'
 
 type Props = {
-  movie: Movie
+  movie: Movie | FavoriteMovie
 }
 
 export const MoviePreview = ({ movie }: Props) => {
   const { getPosterUrl, isLoading } = useImageUrl()
-  const { isFavorite, toggleFavorite } = useFavorite(movie.id)
+  const { isFavorite, toggle } = useFavorite()
 
   const getRatingColor = (rating: number) => {
     if (rating < 5) return 'low'
@@ -25,11 +25,11 @@ export const MoviePreview = ({ movie }: Props) => {
 
   const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
-    toggleFavorite({
+    toggle({
       id: movie.id,
       title: movie.title,
-      posterUrl: movie.poster_path,
-      voteAverage: movie.vote_average,
+      poster_path: movie.poster_path,
+      vote_average: movie.vote_average,
     })
   }
 
@@ -50,16 +50,20 @@ export const MoviePreview = ({ movie }: Props) => {
             className={s.rating}
             data-rating={getRatingColor(movie.vote_average)}
           >
-            {movie.vote_average.toFixed(1)}
+            {movie.vote_average?.toFixed(1)}
           </div>
         </div>
         <h4 className={s.title}>{movie.title}</h4>
       </Link>
       <button
         onClick={handleFavoriteClick}
-        className={`${s.favoriteButton} ${isFavorite ? s.active : ''}`}
+        className={`${s.favoriteButton} ${isFavorite(movie.id) ? s.active : ''}`}
       >
-        {isFavorite ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
+        {isFavorite(movie.id) ? (
+          <FavoriteOutlinedIcon />
+        ) : (
+          <FavoriteBorderOutlinedIcon />
+        )}
       </button>
     </article>
   )

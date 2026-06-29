@@ -97,3 +97,10 @@ export type SortOption =
   | 'release_date.asc'
   | 'original_title.asc'
   | 'original_title.desc'
+
+export type FavoriteMovie = {
+  id: number
+  title: string
+  poster_path: string | null
+  vote_average: number
+}

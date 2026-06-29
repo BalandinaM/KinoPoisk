@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import s from './MoviesSection.module.css'
-import type { Movie } from '@/app/api/types'
+import type { FavoriteMovie, Movie } from '@/app/api/types'
 import { MoviePreview } from './moviePreview'
 
 type Variant = 'mainPage' | 'default'
@@ -8,7 +8,7 @@ type Variant = 'mainPage' | 'default'
 type Props = {
   sectionTitle: string
   link?: string
-  movies?: Movie[]
+  movies?: Movie[] | FavoriteMovie[]
   limit?: number
   variant?: Variant
 }
