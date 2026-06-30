@@ -19,16 +19,32 @@ export const SearchInput = () => {
     }
   }
 
+  const handleClear = () => {
+    setSearch('')
+    navigate(`${Path.Search}`)
+  }
+
   return (
     <div className={s.wrapper}>
       <input
-        type="search"
+        name="search"
+        type="text"
         className={s.input}
         value={search}
         onChange={e => setSearch(e.currentTarget.value)}
         placeholder={'Поиск фильма по названию...'}
         onKeyDown={handleKeyDown}
       />
+      {search && (
+        <button
+          type="button"
+          className={s.clearButton}
+          onClick={handleClear}
+          aria-label="Очистить"
+        >
+          ✕
+        </button>
+      )}
       <button
         onClick={handleSearch}
         disabled={!search.trim()}

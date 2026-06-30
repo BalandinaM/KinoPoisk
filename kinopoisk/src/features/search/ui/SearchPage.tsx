@@ -13,15 +13,27 @@ export const SearchPage = () => {
     { skip: !query }
   )
 
+  if (query === null || query === '') {
+    return (
+      <div className={s.wrap}>
+        <SearchInput />
+      </div>
+    )
+  }
+
   return (
     <div className={s.wrap}>
-      {isLoading && <p>Загрузка...</p>}
       <SearchInput />
-      {searchResult && (
+      {isLoading && <p>Загрузка...</p>}
+      {searchResult?.results.length != 0 ? (
         <MoviesSection
           sectionTitle={`Результаты поиска по запросу "${query}"`}
           movies={searchResult?.results}
         />
+      ) : (
+        <p>
+          {`По вашему запросу "${query}" ни чего не найдено, попробуйте изменить запрос`}
+        </p>
       )}
     </div>
   )
