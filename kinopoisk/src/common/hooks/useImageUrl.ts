@@ -9,7 +9,8 @@ export const useImageUrl = () => {
 
   // Функция для получения полного URL постера
   const getPosterUrl = (path: string | null, size: string = 'w500'): string => {
-    if (!path) return '/placeholder.webp' // заглушка, если нет картинки
+    if (!path)
+      return `https://placehold.co/382/0d253f/white?text=Нет+изображения&font=roboto` // заглушка, если нет картинки
 
     // Проверяем, что размер есть в списке доступных
     const validSize = posterSizes.includes(size) ? size : 'w500'

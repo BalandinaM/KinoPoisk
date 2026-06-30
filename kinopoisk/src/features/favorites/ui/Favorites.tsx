@@ -11,7 +11,6 @@ export const Favorites = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const getTotalPages = () => Math.ceil(favorites.length / PAGE_SIZE)
-  console.log(getTotalPages())
 
   const getPaginatedMovies = () => {
     const startIndex = (currentPage - 1) * PAGE_SIZE
