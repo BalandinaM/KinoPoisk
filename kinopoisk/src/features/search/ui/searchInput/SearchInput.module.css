@@ -1,14 +1,16 @@
 .wrapper {
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 420px;
+  width: 500px; /* ← фиксированная ширина */
+  max-width: 100%; /* ← чтобы не вылезал за экран на мобилках */
   margin: 0 auto;
   border-radius: var(--radius-md);
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: var(--transition);
+  overflow: hidden;
+  flex-shrink: 0; /* ← чтобы не сжимался */
 }
 
 .wrapper:focus-within {
@@ -19,6 +21,7 @@
 
 .input {
   flex: 1;
+  min-width: 0; /* ← убираем ограничение */
   padding: 8px 14px;
   background: transparent;
   border: none;
@@ -26,7 +29,8 @@
   font-size: var(--font-sm);
   font-family: var(--font-family);
   color: var(--color-text-white);
-  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input::placeholder {
@@ -34,7 +38,34 @@
   font-size: var(--font-sm);
 }
 
+.clearButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 50%;
+}
+
+.clearButton:hover {
+  color: var(--color-text-white);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.clearButton:active {
+  transform: scale(0.9);
+}
+
 .button {
+  flex-shrink: 0;
   padding: 8px 16px;
   background-color: var(--color-accent);
   color: var(--color-text-white);
