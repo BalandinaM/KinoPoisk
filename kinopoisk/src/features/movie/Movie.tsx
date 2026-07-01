@@ -1,8 +1,12 @@
-import { useFetchMovieDetailsQuery } from '@/app/api/endpoints/movieApi'
+import {
+  useFetchMovieCreditsQuery,
+  useFetchMovieDetailsQuery,
+} from '@/app/api/endpoints/movieApi'
 import { useParams } from 'react-router-dom'
 import { MovieInfo } from './movieInfo/MovieInfo'
 import { MovieSimular } from './movieSimular/MovieSimular'
 import { MovieCast } from './movieCast/MovieCast'
+import s from './Movie.module.css'
 
 export const Movie = () => {
   const { movie_id } = useParams<{ movie_id: string }>()
@@ -13,18 +17,21 @@ export const Movie = () => {
     { skip: !movieId }
   )
 
-  console.log(movieDetails)
+  const { data: movieCredits, isLoadingCredits } = useFetchMovieCreditsQuery(
+    { movie_id: movieId },
+    { skip: !movieId }
+  )
 
-  if (!movie_id || !movieDetails) {
+  if (!movie_id || !movieDetails || !movieCredits) {
     return <p>Ничего не найдено...</p>
   }
 
   if (isLoading) return <p>Загрузка...</p>
 
   return (
-    <section>
+    <section className={s.wrap}>
       <MovieInfo movie={movieDetails} />
-      <MovieCast />
+      <MovieCast credits={movieCredits.cast} />
       <MovieSimular />
     </section>
   )
