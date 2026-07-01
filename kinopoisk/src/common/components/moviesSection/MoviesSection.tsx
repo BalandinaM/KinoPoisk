@@ -3,7 +3,7 @@ import s from './MoviesSection.module.css'
 import type { FavoriteMovie, Movie } from '@/app/api/types'
 import { MoviePreview } from './moviePreview'
 
-type Variant = 'mainPage' | 'default'
+type Variant = 'limitShow' | 'default'
 
 type Props = {
   sectionTitle: string
@@ -25,7 +25,7 @@ export const MoviesSection = ({
   return (
     <section className={s.section}>
       <div className={s.header}>
-        <h2 className={s.title}>{sectionTitle}</h2>
+        <h3 className={s.title}>{sectionTitle}</h3>
         {link && (
           <Link to={link} className={s.viewMore}>
             Показать больше
@@ -33,7 +33,7 @@ export const MoviesSection = ({
         )}
       </div>
       <div
-        className={`${s.list} ${variant === 'mainPage' ? s.listMainPage : ''}`}
+        className={`${s.list} ${variant === 'limitShow' ? s.listLimitShow : ''}`}
       >
         {moviesToShow?.map(movie => {
           return <MoviePreview movie={movie} />

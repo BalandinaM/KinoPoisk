@@ -1,8 +1,12 @@
 import { withZodCatch } from '@/common/utils'
 import { baseApi } from '../baseApi'
-import type { CreditsParams, DetailsParams } from '../types'
+import type { CreditsParams, DetailsParams, SimilarParams } from '../types'
 import { ApiEndpoints } from '@/common/constants'
-import { creditsSchema, movieDetailsSchema } from '../schemas'
+import {
+  creditsSchema,
+  movieDetailsSchema,
+  similarMoviesResponseSchema,
+} from '../schemas'
 
 export const movieApi = baseApi.injectEndpoints({
   endpoints: build => ({
@@ -29,7 +33,18 @@ export const movieApi = baseApi.injectEndpoints({
       }),
       ...withZodCatch(creditsSchema),
     }),
+    fetchMovieSimular: build.query({
+      query: ({ movie_id, language = 'ru-RU', page = 1 }: SimilarParams) => ({
+        url: `${ApiEndpoints.Movie}/${movie_id}/similar`,
+        params: { language, page },
+      }),
+      ...withZodCatch(similarMoviesResponseSchema),
+    }),
   }),
 })
 
-export const { useFetchMovieDetailsQuery, useFetchMovieCreditsQuery } = movieApi
+export const {
+  useFetchMovieDetailsQuery,
+  useFetchMovieCreditsQuery,
+  useFetchMovieSimularQuery,
+} = movieApi

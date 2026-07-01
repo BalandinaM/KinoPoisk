@@ -47,7 +47,7 @@
   padding: 0;
 }
 
-.listMainPage {
+.listLimitShow {
   grid-template-columns: repeat(6, 1fr); /* 6 колонок только для главной */
   gap: var(--space-md);
 }

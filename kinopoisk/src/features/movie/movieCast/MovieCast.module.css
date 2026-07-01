@@ -1,12 +1,13 @@
 .castSection {
-  /* margin-top: var(--space-xl); */
+  margin-bottom: var(--space-xl);
 }
 
 .title {
-  font-size: var(--font-lg);
-  font-weight: 600;
+  font-size: var(--font-xl);
+  font-weight: 700;
   color: var(--color-text);
   margin: 0 0 var(--space-md);
+  text-align: left;
 }
 
 .list {
