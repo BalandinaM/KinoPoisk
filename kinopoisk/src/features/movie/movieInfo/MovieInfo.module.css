@@ -46,12 +46,8 @@
   line-height: 1.2;
 }
 
-/* ===== Кнопка "Назад" ===== */
-.linkBack {
+.button {
   flex-shrink: 0;
-}
-
-.linkBack a {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
@@ -60,11 +56,13 @@
   font-size: var(--font-sm);
   font-weight: 600;
   transition: var(--transition);
+  background-color: transparent;
   border: 1px solid var(--color-border);
 }
 
-.linkBack a:hover {
+.button:hover {
   background-color: rgba(255, 255, 255, 0.2);
+  border: none;
 }
 
 /* ===== Детали ===== */

@@ -2,6 +2,7 @@ import type { MovieDetails } from '@/app/api/types'
 import { useImageUrl } from '@/common/hooks'
 import s from './MovieInfo.module.css'
 import { getRuntime, getYear } from '@/common/utils'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   movie: MovieDetails
@@ -18,6 +19,7 @@ export const MovieInfo = ({
     genres,
   },
 }: Props) => {
+  const navigate = useNavigate()
   const { getPosterUrl, isLoading } = useImageUrl()
   const posterUrl = getPosterUrl(poster_path, 'w342')
   const yearRelease = getYear(release_date)
@@ -41,9 +43,12 @@ export const MovieInfo = ({
       <div className={s.wrapInfo}>
         <div className={s.wrapTitle}>
           <h3 className={s.title}>{title}</h3>
-          <span className={s.linkBack}>
+          {/* <span className={s.linkBack}>
             <a href="#">Назад</a>
-          </span>
+          </span> */}
+          <button className={s.button} onClick={() => navigate(-1)}>
+            Назад
+          </button>
         </div>
         <div className={s.details}>
           <span className={s.detailsItem}>

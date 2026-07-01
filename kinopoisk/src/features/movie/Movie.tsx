@@ -5,7 +5,6 @@ import {
 } from '@/app/api/endpoints/movieApi'
 import { useParams } from 'react-router-dom'
 import { MovieInfo } from './movieInfo/MovieInfo'
-import { MovieSimular } from './movieSimular/MovieSimular'
 import { MovieCast } from './movieCast/MovieCast'
 import s from './Movie.module.css'
 import { MoviesSection } from '@/common/components/moviesSection'
