@@ -30,38 +30,6 @@
   display: block;
 }
 
-/* ===== Рейтинг ===== */
-.rating {
-  position: absolute;
-  bottom: var(--space-sm);
-  right: var(--space-sm);
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: var(--font-xs);
-  font-weight: 700;
-  color: var(--color-text-white);
-  background-color: var(--rating-color, #666);
-  box-shadow: var(--shadow-sm);
-  z-index: 1;
-}
-
-/* Цвета рейтинга */
-.rating[data-rating='low'] {
-  --rating-color: #e74c3c; /* красный */
-}
-
-.rating[data-rating='medium'] {
-  --rating-color: #f39c12; /* оранжевый */
-}
-
-.rating[data-rating='high'] {
-  --rating-color: #2ecc71; /* зелёный */
-}
-
 /* ===== Кнопка избранного ===== */
 .favoriteButton {
   position: absolute;

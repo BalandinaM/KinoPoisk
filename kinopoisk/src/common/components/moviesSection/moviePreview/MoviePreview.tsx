@@ -4,6 +4,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined'
 import s from './MoviePreview.module.css'
 import { Link } from 'react-router-dom'
+import { Rating } from '../../rating/Rating'
 
 type Props = {
   movie: Movie | FavoriteMovie
@@ -12,12 +13,6 @@ type Props = {
 export const MoviePreview = ({ movie }: Props) => {
   const { getPosterUrl, isLoading } = useImageUrl()
   const { isFavorite, toggle } = useFavorite()
-
-  const getRatingColor = (rating: number) => {
-    if (rating < 5) return 'low'
-    if (rating < 8) return 'medium'
-    return 'high'
-  }
 
   if (isLoading || !movie) {
     return <div>Загрузка...</div>
@@ -33,7 +28,7 @@ export const MoviePreview = ({ movie }: Props) => {
     })
   }
 
-  const posterUrl = getPosterUrl(movie.poster_path, 'w342')
+  const posterUrl = getPosterUrl(movie.poster_path, 'w185')
 
   return (
     <article key={movie.id} className={s.card}>
@@ -46,12 +41,13 @@ export const MoviePreview = ({ movie }: Props) => {
             height={270}
             className={s.image}
           />
-          <div
+          <Rating rating={movie.vote_average} />
+          {/* <div
             className={s.rating}
             data-rating={getRatingColor(movie.vote_average)}
           >
             {movie.vote_average?.toFixed(1)}
-          </div>
+          </div> */}
         </div>
         <h4 className={s.title}>{movie.title}</h4>
       </Link>
