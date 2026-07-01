@@ -1,0 +1,200 @@
+.movieInfo {
+  display: flex;
+  gap: var(--space-xl);
+  padding: var(--space-lg) 0;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Постер ===== */
+.wrapImg {
+  flex-shrink: 0;
+  width: 280px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== Информация ===== */
+.wrapInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.wrapTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: var(--font-xxl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ===== Кнопка "Назад" ===== */
+.linkBack {
+  flex-shrink: 0;
+}
+
+.linkBack a {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  color: var(--color-text-white);
+  text-decoration: none;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  transition: var(--transition);
+  border: 1px solid var(--color-border);
+}
+
+.linkBack a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Детали ===== */
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-lg);
+  color: var(--color-text-secondary);
+  font-size: var(--font-sm);
+}
+
+.detailsItem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+}
+
+.detailsItem strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ===== Описание ===== */
+.overview {
+  font-size: var(--font-md);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  text-align: left;
+}
+
+/* ===== Жанры ===== */
+.genresWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.genresTitle {
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  text-align: left;
+}
+
+.genresList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.genreItem {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 1024px) {
+  .movieInfo {
+    gap: var(--space-lg);
+  }
+
+  .wrapImg {
+    width: 220px;
+  }
+
+  .title {
+    font-size: var(--font-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .movieInfo {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .wrapImg {
+    width: 200px;
+  }
+
+  .wrapTitle {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .title {
+    font-size: var(--font-lg);
+  }
+
+  .linkBack a {
+    font-size: var(--font-xs);
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .overview {
+    font-size: var(--font-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapImg {
+    width: 160px;
+  }
+
+  .title {
+    font-size: var(--font-md);
+  }
+
+  .details {
+    font-size: var(--font-xs);
+    gap: var(--space-sm);
+  }
+
+  .overview {
+    font-size: var(--font-xs);
+  }
+
+  .genreItem {
+    font-size: var(--font-xs);
+    padding: 2px var(--space-sm);
+  }
+}
