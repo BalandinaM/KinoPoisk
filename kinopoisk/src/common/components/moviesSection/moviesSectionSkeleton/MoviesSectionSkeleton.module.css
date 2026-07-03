@@ -1,0 +1,112 @@
+/* common/components/moviesSection/MoviesSectionSkeleton.module.css */
+
+.section {
+  margin-bottom: 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+}
+
+.skeletonTitle {
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.skeletonViewMore {
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 1200px;
+}
+
+.listDefault {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.listLimitShow {
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-md);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.skeletonImage {
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.skeletonTitleText {
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.skeletonRating {
+  border-radius: 50%;
+  display: block;
+  align-self: flex-start;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 1024px) {
+  .list {
+    gap: var(--space-sm);
+  }
+
+  .card {
+    gap: var(--space-xs);
+  }
+}
+
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .listDefault {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .listLimitShow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xs);
+  }
+
+  .listDefault {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .listLimitShow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

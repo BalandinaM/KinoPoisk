@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import s from './SearchInput.module.css'
 
 type Props = {
-  setCurrentPage: (arg: number) => void
+  setCurrentPage?: (arg: number) => void
 }
 
 export const SearchInput = ({ setCurrentPage }: Props) => {
@@ -12,7 +12,7 @@ export const SearchInput = ({ setCurrentPage }: Props) => {
   const navigate = useNavigate()
 
   const handleSearch = () => {
-    setCurrentPage(1)
+    setCurrentPage?.(1)
     if (search.trim()) {
       navigate(`${Path.Search}?query=${search}`)
     }
@@ -20,13 +20,13 @@ export const SearchInput = ({ setCurrentPage }: Props) => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      setCurrentPage(1)
+      setCurrentPage?.(1)
       handleSearch()
     }
   }
 
   const handleClear = () => {
-    setCurrentPage(1)
+    setCurrentPage?.(1)
     setSearch('')
     navigate(`${Path.Search}`)
   }

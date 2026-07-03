@@ -14,9 +14,9 @@ export const MoviePreview = ({ movie }: Props) => {
   const { getPosterUrl, isLoading } = useImageUrl()
   const { isFavorite, toggle } = useFavorite()
 
-  if (isLoading || !movie) {
-    return <div>Загрузка...</div>
-  }
+  // if (isLoading || !movie) {
+  //   return <div>Загрузка...</div>
+  // }
 
   const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
@@ -42,12 +42,6 @@ export const MoviePreview = ({ movie }: Props) => {
             className={s.image}
           />
           <Rating rating={movie.vote_average} />
-          {/* <div
-            className={s.rating}
-            data-rating={getRatingColor(movie.vote_average)}
-          >
-            {movie.vote_average?.toFixed(1)}
-          </div> */}
         </div>
         <h4 className={s.title}>{movie.title}</h4>
       </Link>

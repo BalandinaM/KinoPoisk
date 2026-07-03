@@ -32,9 +32,5 @@ export const WelcomeSection = ({ movies }: Props) => {
         <SearchInput />
       </div>
     </section>
-    // <div className={s.section} style={backgroundStyle}>
-    //   <p>welcome</p>
-    //   <SearchInput title={'Ищете что посмотреть? Начните поиск с TMDB'} />
-    // </div>
   )
 }
