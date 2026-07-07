@@ -3,6 +3,7 @@ import { useFavorite } from '@/common/hooks'
 import s from './Favorites.module.css'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@/common/components/pagination/Pagination'
+import { EmptyState } from '@/common/components/emptyState'
 
 const PAGE_SIZE = 20
 
@@ -25,11 +26,7 @@ export const Favorites = () => {
   }, [currentPage])
 
   if (favorites.length === 0) {
-    return (
-      <div className={s.empty}>
-        <p>У вас пока нет избранных фильмов</p>
-      </div>
-    )
+    return <EmptyState message={'У вас пока нет избранных фильмов'} />
   }
 
   return (
