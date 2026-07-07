@@ -6,6 +6,7 @@ import { getCategoryTitle } from '../api/constants'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@/common/components/pagination/Pagination'
 import { MoviesSection } from '@/common/components/moviesSection'
+import { MoviesSectionSkeleton } from '@/common/components/moviesSection/moviesSectionSkeleton'
 
 export const CategoryPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -21,22 +22,24 @@ export const CategoryPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [currentPage])
 
-  if (isLoading) {
-    return <div className={s.loader}>Загрузка...</div>
-  }
-
   return (
     <div className={s.wrap}>
       <CategoryMenu setCurrentPage={setCurrentPage} />
-      <MoviesSection
-        sectionTitle={getCategoryTitle(category || 'popular')}
-        movies={movies?.results}
-      />
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        pagesCount={movies?.total_pages || 1}
-      />
+      {isLoading ? (
+        <MoviesSectionSkeleton variant="default" count={20} />
+      ) : (
+        <>
+          <MoviesSection
+            sectionTitle={getCategoryTitle(category || 'popular')}
+            movies={movies?.results}
+          />
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            pagesCount={movies?.total_pages || 1}
+          />
+        </>
+      )}
     </div>
   )
 }
