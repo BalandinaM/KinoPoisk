@@ -13,10 +13,11 @@ export const Movie = () => {
   const { movie_id } = useParams<{ movie_id: string }>()
   const movieId = Number(movie_id)
 
-  const { data: movieDetails, isLoading } = useFetchMovieDetailsQuery(
-    { movie_id: movieId },
-    { skip: !movieId }
-  )
+  const {
+    data: movieDetails,
+    isLoading,
+    isFetching,
+  } = useFetchMovieDetailsQuery({ movie_id: movieId }, { skip: !movieId })
 
   const { data: movieCredits } = useFetchMovieCreditsQuery(
     { movie_id: movieId },
@@ -28,11 +29,11 @@ export const Movie = () => {
     { skip: !movieId }
   )
 
+  if (isLoading || isFetching) return <p>Загрузка...</p>
+
   if (!movie_id || !movieDetails || !movieCredits || !moviesSimular) {
     return <p>Ничего не найдено...</p>
   }
-
-  if (isLoading) return <p>Загрузка...</p>
 
   return (
     <section className={s.wrap}>

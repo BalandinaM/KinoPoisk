@@ -6,12 +6,13 @@ import { useMoviesCategories } from './hooks'
 import { getCategoryTitle } from '@/features/categoryPage/api/constants'
 import { WelcomeSkeleton } from './welcomeSkeleton'
 import { MoviesSectionSkeleton } from '@/common/components/moviesSection/moviesSectionSkeleton'
+import { EmptyState } from '@/common/components/emptyState'
 
 export const MainPage = () => {
   const { nowPlaying, popular, topRated, upcoming, isLoading } =
     useMoviesCategories()
 
-  if (isLoading || !nowPlaying || !popular || !topRated || !upcoming) {
+  if (isLoading) {
     return (
       <>
         <WelcomeSkeleton />
@@ -23,6 +24,10 @@ export const MainPage = () => {
         </div>
       </>
     )
+  }
+
+  if (!nowPlaying || !popular || !topRated || !upcoming) {
+    return <EmptyState message="Данные временно недоступны" />
   }
 
   return (
