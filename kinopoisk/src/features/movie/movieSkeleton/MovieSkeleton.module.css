@@ -1,0 +1,151 @@
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg) 0;
+}
+
+.titleSkeleton {
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.infoSkeleton {
+  display: flex;
+  gap: var(--space-xl);
+  padding: var(--space-lg) 0;
+  align-items: flex-start;
+}
+
+.posterSkeleton {
+  flex-shrink: 0;
+  width: 280px;
+}
+
+.posterImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+}
+
+.detailsSkeleton {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.headerSkeleton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metaSkeleton {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-lg);
+}
+
+.overviewSkeleton {
+  margin-top: var(--space-sm);
+}
+
+.genresSkeleton {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.castSkeleton {
+  margin-bottom: var(--space-xl);
+}
+
+.castListSkeleton {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.castCardSkeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: var(--space-sx);
+  text-align: left;
+}
+
+.castImageSkeleton {
+  aspect-ratio: 1 / 1;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.similarSkeleton {
+  margin-bottom: var(--space-xl);
+}
+
+.similarListSkeleton {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.similarCardSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.similarImageSkeleton {
+  aspect-ratio: 2 / 3;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 1024px) {
+  .castListSkeleton {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .similarListSkeleton {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .infoSkeleton {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .posterSkeleton {
+    width: 200px;
+  }
+
+  .castListSkeleton {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .similarListSkeleton {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .posterSkeleton {
+    width: 160px;
+  }
+
+  .castListSkeleton {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .similarListSkeleton {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

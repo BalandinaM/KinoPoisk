@@ -8,16 +8,17 @@ import { MovieInfo } from './movieInfo/MovieInfo'
 import { MovieCast } from './movieCast/MovieCast'
 import s from './Movie.module.css'
 import { MoviesSection } from '@/common/components/moviesSection'
+import { MovieSkeleton } from './movieSkeleton'
+import { EmptyState } from '@/common/components/emptyState'
 
 export const Movie = () => {
   const { movie_id } = useParams<{ movie_id: string }>()
   const movieId = Number(movie_id)
 
-  const {
-    data: movieDetails,
-    isLoading,
-    isFetching,
-  } = useFetchMovieDetailsQuery({ movie_id: movieId }, { skip: !movieId })
+  const { data: movieDetails, isLoading } = useFetchMovieDetailsQuery(
+    { movie_id: movieId },
+    { skip: !movieId }
+  )
 
   const { data: movieCredits } = useFetchMovieCreditsQuery(
     { movie_id: movieId },
@@ -29,10 +30,12 @@ export const Movie = () => {
     { skip: !movieId }
   )
 
-  if (isLoading || isFetching) return <p>Загрузка...</p>
+  if (isLoading) {
+    return <MovieSkeleton />
+  }
 
   if (!movie_id || !movieDetails || !movieCredits || !moviesSimular) {
-    return <p>Ничего не найдено...</p>
+    return <EmptyState message={'К сожалению информация о фильме не найдена'} />
   }
 
   return (
