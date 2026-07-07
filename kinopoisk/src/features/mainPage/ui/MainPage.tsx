@@ -4,26 +4,15 @@ import { MoviesCategory } from '@/common/constants'
 import { WelcomeSection } from './welcomeSection'
 import { useMoviesCategories } from './hooks'
 import { getCategoryTitle } from '@/features/categoryPage/api/constants'
-import { WelcomeSkeleton } from './welcomeSkeleton'
-import { MoviesSectionSkeleton } from '@/common/components/moviesSection/moviesSectionSkeleton'
 import { EmptyState } from '@/common/components/emptyState'
+import { MainPageSkeleton } from './mainPageSkeleton'
 
 export const MainPage = () => {
   const { nowPlaying, popular, topRated, upcoming, isLoading } =
     useMoviesCategories()
 
   if (isLoading) {
-    return (
-      <>
-        <WelcomeSkeleton />
-        <div className={s.wrap}>
-          <MoviesSectionSkeleton variant="limitShow" count={6} />
-          <MoviesSectionSkeleton variant="limitShow" count={6} />
-          <MoviesSectionSkeleton variant="limitShow" count={6} />
-          <MoviesSectionSkeleton variant="limitShow" count={6} />
-        </div>
-      </>
-    )
+    return <MainPageSkeleton />
   }
 
   if (!nowPlaying || !popular || !topRated || !upcoming) {

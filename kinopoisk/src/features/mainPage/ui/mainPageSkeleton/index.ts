@@ -1,0 +1,1 @@
+export { MainPageSkeleton } from './MainPageSkeleton'
