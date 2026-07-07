@@ -11,8 +11,7 @@ export const MainPage = () => {
   const { nowPlaying, popular, topRated, upcoming, isLoading } =
     useMoviesCategories()
 
-  // eslint-disable-next-line no-constant-condition
-  if (isLoading) {
+  if (isLoading || !nowPlaying || !popular || !topRated || !upcoming) {
     return (
       <>
         <WelcomeSkeleton />
@@ -29,32 +28,32 @@ export const MainPage = () => {
   return (
     <>
       {/* <WelcomeSkeleton /> */}
-      <WelcomeSection movies={popular!.results} />
+      <WelcomeSection movies={popular.results} />
       <div className={s.wrap}>
         <MoviesSection
           sectionTitle={getCategoryTitle(MoviesCategory.NowPlaying)}
-          movies={nowPlaying!.results}
+          movies={nowPlaying.results}
           link={`/movies/${MoviesCategory.NowPlaying}`}
           limit={6}
           variant="limitShow"
         />
         <MoviesSection
           sectionTitle={getCategoryTitle(MoviesCategory.Popular)}
-          movies={popular!.results}
+          movies={popular.results}
           link={`/movies/${MoviesCategory.Popular}`}
           limit={6}
           variant="limitShow"
         />
         <MoviesSection
           sectionTitle={getCategoryTitle(MoviesCategory.TopRated)}
-          movies={topRated!.results}
+          movies={topRated.results}
           link={`/movies/${MoviesCategory.TopRated}`}
           limit={6}
           variant="limitShow"
         />
         <MoviesSection
           sectionTitle={getCategoryTitle(MoviesCategory.Upcoming)}
-          movies={upcoming!.results}
+          movies={upcoming.results}
           link={`/movies/${MoviesCategory.Upcoming}`}
           limit={6}
           variant="limitShow"
