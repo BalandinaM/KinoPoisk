@@ -6,7 +6,7 @@ import { MoviePreview } from './moviePreview'
 type Variant = 'limitShow' | 'default'
 
 type Props = {
-  sectionTitle: string
+  sectionTitle?: string
   link?: string
   movies?: Movie[] | FavoriteMovie[]
   limit?: number
