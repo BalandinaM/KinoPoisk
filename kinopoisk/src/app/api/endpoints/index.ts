@@ -1,4 +1,5 @@
 export { configApi } from './configApi'
+export { filterApi } from './filterApi'
 export { movieApi } from './movieApi'
 export { moviesApi } from './moviesApi'
 export { searchApi } from './searchApi'
