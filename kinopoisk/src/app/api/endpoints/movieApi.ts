@@ -11,25 +11,16 @@ import {
 export const movieApi = baseApi.injectEndpoints({
   endpoints: build => ({
     fetchMovieDetails: build.query({
-      query: ({
-        movie_id,
-        language = 'ru-RU',
-        append_to_response,
-      }: DetailsParams) => ({
+      query: ({ movie_id, language = 'ru-RU' }: DetailsParams) => ({
         url: `${ApiEndpoints.Movie}/${movie_id}`,
-        params: { language, append_to_response },
+        params: { language },
       }),
       ...withZodCatch(movieDetailsSchema),
     }),
     fetchMovieCredits: build.query({
-      query: ({
-        movie_id,
-        language = 'ru-RU',
-        // append_to_response,
-      }: CreditsParams) => ({
+      query: ({ movie_id, language = 'ru-RU' }: CreditsParams) => ({
         url: `${ApiEndpoints.Movie}/${movie_id}/credits`,
         params: { language },
-        // params: { language, append_to_response },
       }),
       ...withZodCatch(creditsSchema),
     }),

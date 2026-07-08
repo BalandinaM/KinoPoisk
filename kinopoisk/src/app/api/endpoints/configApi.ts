@@ -8,7 +8,6 @@ export const configApi = baseApi.injectEndpoints({
     getConfig: build.query({
       query: () => ({
         url: ApiEndpoints.Configuration,
-        params: {}, // ← добавить пустой объект, чтобы paramsSerializer сработал
       }),
       ...withZodCatch(configurationSchema),
     }),

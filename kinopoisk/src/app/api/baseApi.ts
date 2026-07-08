@@ -9,21 +9,12 @@ export const baseApi = createApi({
       headers: {
         accept: 'application/json',
       },
-      //это что бы добавить апикей в параметры запроса
-      paramsSerializer: params => {
-        const searchParams = new URLSearchParams()
-
-        // Всегда добавляем api_key
-        searchParams.append('api_key', import.meta.env.VITE_API_KEY)
-
-        // Добавляем остальные параметры
-        Object.entries(params).forEach(([key, value]) => {
-          if (value !== undefined && value !== null) {
-            searchParams.append(key, String(value))
-          }
-        })
-
-        return searchParams.toString()
+      prepareHeaders: headers => {
+        headers.set(
+          'Authorization',
+          `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+        )
+        return headers
       },
     })(args, api, extraOptions)
 
