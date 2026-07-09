@@ -3,12 +3,12 @@ import {
   useFetchSortedMoviesQuery,
 } from '@/app/api/endpoints/filterApi'
 import type { SortOption } from '@/app/api/types'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { initialStateFilter } from '../model'
 import { MoviesSection } from '@/common/components/moviesSection'
-import { RATING, SORT_OPTIONS } from '../model/filterConstants'
+import { SORT_OPTIONS } from '../model/filterConstants'
 import { RatingSlider } from './RatingSlider/RatingSlider'
-// import TwoThumbs from './range/Range'
+import { useDebounceValue } from '@/common/hooks'
 
 export const FilteredMovies = () => {
   const { data: genresData } = useFetchGenreMovieListQuery({
@@ -16,22 +16,32 @@ export const FilteredMovies = () => {
   })
   const [sort, setSort] = useState<SortOption>(initialStateFilter.sort)
   const [genres, setGenres] = useState<number[]>([])
-  // const [ratingGte, setRatingGte] = useState(initialStateFilter.ratingGte)
-  // const [ratingLte, setRatingLte] = useState(initialStateFilter.ratingLte)
   const [ratingRange, setRatingRange] = useState<[number, number]>([
     initialStateFilter.ratingGte,
     initialStateFilter.ratingLte,
   ])
 
+  const debounceSort = useDebounceValue(sort)
+  const debounceRating = useDebounceValue(ratingRange)
+  const debounceGenres = useDebounceValue(genres)
+
   const { data: moviesSorted } = useFetchSortedMoviesQuery({
-    with_genres: genres.length ? genres.join(',') : undefined,
-    sort_by: sort,
-    vote_average_gte: ratingRange[0],
-    vote_average_lte: ratingRange[1],
+    with_genres: debounceGenres.length ? debounceGenres.join(',') : undefined,
+    sort_by: debounceSort,
+    vote_average_gte: debounceRating[0],
+    vote_average_lte: debounceRating[1],
     page: 1,
   })
   console.log(genresData)
   console.log(moviesSorted)
+
+  const handleGenreToggle = (genreId: number) => {
+    setGenres(prev =>
+      prev.includes(genreId)
+        ? prev.filter(id => id !== genreId)
+        : [...prev, genreId]
+    )
+  }
 
   return (
     <div>
@@ -45,24 +55,32 @@ export const FilteredMovies = () => {
           </option>
         ))}
       </select>
-      <ul>
-        <div>
-          <RatingSlider
-            value={ratingRange}
-            onChange={newValue => {
-              console.log('Новое значение:', newValue)
-              setRatingRange(newValue)
-            }}
-          />
-          <p>
-            Рейтинг: {ratingRange[0].toFixed(1)} - {ratingRange[1].toFixed(1)}
-          </p>
-        </div>
+      <div>
+        <RatingSlider
+          value={ratingRange}
+          onChange={newValue => {
+            console.log('Новое значение:', newValue)
+            setRatingRange(newValue)
+          }}
+        />
+        <p>
+          Рейтинг {ratingRange[0].toFixed(1)} - {ratingRange[1].toFixed(1)}
+        </p>
+      </div>
+      <div>
         {genresData?.genres.map(item => {
-          return <li key={item.id}>{item.name}</li>
+          return (
+            <button
+              key={item.id}
+              // className={`${s.genreButton} ${genres.includes(item.id) ? s.active : ''}`}
+              onClick={() => handleGenreToggle(item.id)}
+              type="button"
+            >
+              {item.name}
+            </button>
+          )
         })}
-      </ul>
-
+      </div>
       <MoviesSection movies={moviesSorted?.results} />
     </div>
   )
