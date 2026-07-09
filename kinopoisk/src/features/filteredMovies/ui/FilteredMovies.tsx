@@ -12,18 +12,19 @@ import { SortFilter } from './sortFilter'
 import { GenresFilter } from './genresFilter'
 import { MoviesSectionSkeleton } from '@/common/components/moviesSection/moviesSectionSkeleton'
 import { Pagination } from '@/common/components/pagination/Pagination'
+import { PAGINATION } from '@/common/constants'
 
 export const FilteredMovies = () => {
   const { data: genresData } = useFetchGenreMovieListQuery({
     language: 'ru-RU',
   })
-  const [currentPage, setCurrentPage] = useState(1)
   const [sort, setSort] = useState<SortOption>(initialStateFilter.sort)
-  const [genres, setGenres] = useState<number[]>([])
+  const [genres, setGenres] = useState<number[]>(initialStateFilter.genres)
   const [ratingRange, setRatingRange] = useState<[number, number]>([
     initialStateFilter.ratingGte,
     initialStateFilter.ratingLte,
   ])
+  const [currentPage, setCurrentPage] = useState(PAGINATION.DEFAULT_PAGE)
 
   const debounceSort = useDebounceValue(sort)
   const debounceRating = useDebounceValue(ratingRange)
@@ -47,6 +48,13 @@ export const FilteredMovies = () => {
     )
   }
 
+  const handleResetFilters = () => {
+    setSort(initialStateFilter.sort)
+    setGenres(initialStateFilter.genres)
+    setRatingRange([initialStateFilter.ratingGte, initialStateFilter.ratingLte])
+    setCurrentPage(PAGINATION.DEFAULT_PAGE)
+  }
+
   return (
     <div>
       <SortFilter sort={sort} setSort={setSort} />
@@ -60,6 +68,7 @@ export const FilteredMovies = () => {
         genres={genresData?.genres}
         handleGenreToggle={handleGenreToggle}
       />
+      <button onClick={handleResetFilters}>Сбросить фильтры</button>
       {isLoading ? (
         <MoviesSectionSkeleton variant="default" count={20} />
       ) : (

@@ -7,9 +7,10 @@ import { useEffect, useState } from 'react'
 import { Pagination } from '@/common/components/pagination/Pagination'
 import { MoviesSection } from '@/common/components/moviesSection'
 import { MoviesSectionSkeleton } from '@/common/components/moviesSection/moviesSectionSkeleton'
+import { PAGINATION } from '@/common/constants'
 
 export const CategoryPage = () => {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(PAGINATION.DEFAULT_PAGE)
   const { category } = useParams<{ category: string }>()
 
   const { data: movies, isLoading } = useFetchMoviesByCategoryQuery({
@@ -36,7 +37,7 @@ export const CategoryPage = () => {
           <Pagination
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-            pagesCount={movies?.total_pages || 1}
+            pagesCount={movies?.total_pages || PAGINATION.DEFAULT_PAGE}
           />
         </>
       )}

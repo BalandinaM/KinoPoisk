@@ -9,6 +9,7 @@ export const RATING = {
 
 export const initialStateFilter: InitialStateType = {
   sort: 'popularity.desc',
+  genres: [],
   ratingGte: RATING.MIN,
   ratingLte: RATING.MAX,
 }
