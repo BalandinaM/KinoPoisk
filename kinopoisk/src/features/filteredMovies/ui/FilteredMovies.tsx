@@ -6,9 +6,10 @@ import type { SortOption } from '@/app/api/types'
 import { useState } from 'react'
 import { initialStateFilter } from '../model'
 import { MoviesSection } from '@/common/components/moviesSection'
-import { SORT_OPTIONS } from '../model/filterConstants'
-import { RatingSlider } from './RatingSlider/RatingSlider'
+import { RatingSlider } from './ratingSlider'
 import { useDebounceValue } from '@/common/hooks'
+import { SortFilter } from './sortFilter'
+import { GenresFilter } from './genresFilter'
 
 export const FilteredMovies = () => {
   const { data: genresData } = useFetchGenreMovieListQuery({
@@ -45,42 +46,17 @@ export const FilteredMovies = () => {
 
   return (
     <div>
-      <select
-        value={sort}
-        onChange={e => setSort(e.target.value as SortOption)}
-      >
-        {SORT_OPTIONS.map(item => (
-          <option id={item.value} key={item.value} value={item.value}>
-            {item.name}
-          </option>
-        ))}
-      </select>
-      <div>
-        <RatingSlider
-          value={ratingRange}
-          onChange={newValue => {
-            console.log('Новое значение:', newValue)
-            setRatingRange(newValue)
-          }}
-        />
-        <p>
-          Рейтинг {ratingRange[0].toFixed(1)} - {ratingRange[1].toFixed(1)}
-        </p>
-      </div>
-      <div>
-        {genresData?.genres.map(item => {
-          return (
-            <button
-              key={item.id}
-              // className={`${s.genreButton} ${genres.includes(item.id) ? s.active : ''}`}
-              onClick={() => handleGenreToggle(item.id)}
-              type="button"
-            >
-              {item.name}
-            </button>
-          )
-        })}
-      </div>
+      <SortFilter sort={sort} setSort={setSort} />
+      <RatingSlider
+        value={ratingRange}
+        onChange={newValue => {
+          setRatingRange(newValue)
+        }}
+      />
+      <GenresFilter
+        genres={genresData?.genres}
+        handleGenreToggle={handleGenreToggle}
+      />
       <MoviesSection movies={moviesSorted?.results} />
     </div>
   )
