@@ -1,3 +1,4 @@
+import s from './FilteredMovies.module.css'
 import {
   useFetchGenreMovieListQuery,
   useFetchSortedMoviesQuery,
@@ -56,19 +57,26 @@ export const FilteredMovies = () => {
   }
 
   return (
-    <div>
-      <SortFilter sort={sort} setSort={setSort} />
-      <RatingSlider
-        value={ratingRange}
-        onChange={newValue => {
-          setRatingRange(newValue)
-        }}
-      />
-      <GenresFilter
-        genres={genresData?.genres}
-        handleGenreToggle={handleGenreToggle}
-      />
-      <button onClick={handleResetFilters}>Сбросить фильтры</button>
+    <div className={s.wrap}>
+      <div className={s.wrapFilters}>
+        <div className={s.wrapSortAndRating}>
+          <SortFilter sort={sort} setSort={setSort} />
+          <RatingSlider
+            value={ratingRange}
+            onChange={newValue => {
+              setRatingRange(newValue)
+            }}
+          />
+        </div>
+        <GenresFilter
+          genres={genresData?.genres}
+          selectedGenres={genres}
+          handleGenreToggle={handleGenreToggle}
+        />
+        <button className={s.resetButton} onClick={handleResetFilters}>
+          Сбросить фильтры
+        </button>
+      </div>
       {isLoading ? (
         <MoviesSectionSkeleton variant="default" count={20} />
       ) : (

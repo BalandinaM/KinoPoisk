@@ -1,0 +1,29 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%; /* ← занимает всю доступную ширину */
+  max-width: 400px; /* ← ограничиваем максимальную ширину */
+}
+
+.label {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--color-text-white);
+  margin: 0;
+}
+
+.values {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 768px) {
+  .wrap {
+    min-width: 100%;
+  }
+}

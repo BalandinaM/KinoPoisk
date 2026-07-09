@@ -1,5 +1,6 @@
 import { Range, getTrackBackground } from 'react-range'
 import { RATING } from '../../model'
+import s from './RatingSlider.module.css'
 
 type Props = {
   value: [number, number]
@@ -8,11 +9,11 @@ type Props = {
 
 export const RatingSlider = ({ value, onChange }: Props) => {
   return (
-    <>
-      <p>
+    <div className={s.wrap}>
+      <p className={s.label}>
         Рейтинг {value[0].toFixed(1)} - {value[1].toFixed(1)}
       </p>
-      <div style={{ width: '100%', padding: '8px 0' }}>
+      <div style={{ width: '100%' }}>
         <Range
           values={value} // ← массив из двух чисел
           step={RATING.STEP}
@@ -28,7 +29,7 @@ export const RatingSlider = ({ value, onChange }: Props) => {
               onTouchStart={props.onTouchStart}
               style={{
                 ...props.style,
-                height: '36px',
+                height: '18px',
                 display: 'flex',
                 width: '100%',
               }}
@@ -36,7 +37,7 @@ export const RatingSlider = ({ value, onChange }: Props) => {
               <div
                 ref={props.ref}
                 style={{
-                  height: '6px',
+                  height: '4px',
                   width: '100%',
                   borderRadius: '4px',
                   background: getTrackBackground({
@@ -57,8 +58,8 @@ export const RatingSlider = ({ value, onChange }: Props) => {
               {...props}
               style={{
                 ...props.style,
-                height: '20px',
-                width: '20px',
+                height: '12px',
+                width: '12px',
                 borderRadius: '50%',
                 backgroundColor: isDragged ? '#0190b8' : '#01b4e4',
                 boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
@@ -67,17 +68,11 @@ export const RatingSlider = ({ value, onChange }: Props) => {
             />
           )}
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginTop: '8px',
-          }}
-        >
+        {/* <div className={s.values}>
           <span>{value[0].toFixed(1)}</span>
           <span>{value[1].toFixed(1)}</span>
-        </div>
+        </div> */}
       </div>
-    </>
+    </div>
   )
 }

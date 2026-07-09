@@ -1,0 +1,57 @@
+.wrap {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* .wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+} */
+
+.button {
+  padding: var(--space-sm) var(--space-md);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: var(--transition);
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.button:hover {
+  color: var(--color-accent-hover);
+  opacity: 1;
+}
+
+.buttonActive {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text);
+  opacity: 1;
+}
+
+.buttonActive:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-text);
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 768px) {
+  .wrap {
+    gap: var(--space-xs);
+  }
+
+  .button {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-xs);
+  }
+}
