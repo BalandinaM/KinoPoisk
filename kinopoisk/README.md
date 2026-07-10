@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+# 🎬 KinoPoisk — тестовое задание
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для поиска и просмотра фильмов с использованием открытого API [TMDB](https://www.themoviedb.org/). Реализован в рамках дипломной работы по курсу фронтенд-разработки.
 
-Currently, two official plugins are available:
+## 📸 Демо
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Ссылка на деплой: [kinopoisk.vercel.app](https://kino-poisk-tau.vercel.app/)
 
-## React Compiler
+## 📋 Функциональность
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔍 **Поиск фильмов** по названию с переходом на отдельную страницу
+- 📂 **Категории фильмов**: популярные, с высоким рейтингом, сейчас в прокате, скоро
+- 🎚️ **Фильтрация и сортировка**: по жанрам, рейтингу, популярности, дате выхода
+- ❤️ **Избранное**: добавление/удаление фильмов с сохранением в `localStorage`
+- 📄 **Детальная страница фильма**: постер, описание, рейтинг, актёры, похожие фильмы
+- 🌗 **Тёмная/светлая тема** с сохранением выбора в `localStorage`
+- 📱 **Адаптивная вёрстка**
+- ⏳ **Скелетоны** и **Linear Progress** для индикации загрузки
 
-## Expanding the ESLint configuration
+## 🛠️ Стек технологий
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** + **TypeScript**
+- **Redux Toolkit** + **RTK Query** — управление состоянием и работа с API
+- **React Router 6** — маршрутизация
+- **Material UI (MUI)** — готовые компоненты (кнопки, карточки, слайдеры)
+- **CSS Modules** — стилизация компонентов
+- **Zod** — валидация ответов от API
+- **Vite** — сборка проекта
+- **Vercel** — деплой
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Установка и запуск
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Клонировать репозиторий
+git clone https://github.com/BalandinaM/KinoPoisk.git
+cd KinoPoisk/kinopoisk
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Установить зависимости
+npm install
+
+# Запустить в режиме разработки
+npm run dev
+
+# Собрать проект
+npm run build
+
+# Предпросмотр сборки
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔐 Переменные окружения
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Создай файл `.env` в корне проекта и добавь:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_BASE_URL=https://api.themoviedb.org/3
+VITE_API_KEY=твой_api_ключ
+VITE_TMDB_TOKEN=твой_токен (если используешь)
 ```
+
+**Где взять ключи:**
+
+- Зарегистрируйся на [TMDB](https://www.themoviedb.org)
+- В настройках API получи `API Key` и `Access Token`
+
+## 📁 Структура проекта (основные папки)
+
+```
+src/
+├── app/                    # Настройка приложения (API, store, routing, theme)
+│   ├── api/                # RTK Query эндпоинты + базовые настройки
+│   ├── model/              # Redux store + slices (theme, favorites)
+│   ├── routing/            # Роутинг
+│   └── theme/              # MUI тема
+├── common/                 # Переиспользуемые компоненты, хуки, утилиты, стили
+│   ├── components/         # Header, Footer, MovieCard, MovieList, Pagination, etc.
+│   ├── hooks/              # Кастомные хуки (useTheme, useFavorites, useDebounce)
+│   ├── constants/          # Пути, эндпоинты, категории
+│   └── styles/             # Глобальные CSS-переменные
+├── features/               # Фичи (страницы)
+    ├── mainPage/           # Главная страница
+    ├── categoryMovies/     # Категории фильмов
+    ├── filteredMovies/     # Фильтрация + сортировка
+    ├── search/             # Поиск
+    ├── favorites/          # Избранное
+    ├── movie/              # Детали фильма
+    └── notFound/           # 404 страница
+```
+
+## 📌 Особенности реализации
+
+- **RTK Query** — все запросы к API централизованы и типизированы с помощью Zod
+- **Избранное** — хранится в `localStorage` и синхронизируется с Redux
+- **Пагинация** — реализована через кнопки
+- **Глобальный Linear Progress** — показывает фоновые запросы
+- **Скелетоны** — на всех страницах, кроме избранного (данные из `localStorage`)
+
+## 🐛 Обработка ошибок
+
+- Глобальный `handleErrors` для всех запросов
+- Ошибки сети, невалидный токен, 404 — выводятся через `toast`
+- Валидация ответов через Zod с кастомной обработкой ошибок
+
+## 🌐 Деплой
+
+Проект задеплоен на **Vercel**. Автоматический деплой происходит при пуше в ветку `main`.
+
+## 📄 Лицензия
+
+Данный проект выполнен в учебных целях. Данные предоставлены TMDB.
+
+---
+
+**Автор:** BalandinaM  
+**Курс:** Фронтенд-разработка (IT-INCUBATOR)
