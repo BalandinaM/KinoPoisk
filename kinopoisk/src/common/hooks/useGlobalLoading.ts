@@ -1,12 +1,12 @@
 import { moviesApi } from '@/app/api/endpoints'
+import { configApi } from '@/app/api/endpoints'
 import type { RootState } from '@/app/model/store.ts'
 import { useSelector } from 'react-redux'
 
 // Список эндпоинтов для исключения из глобального индикатора
 const excludedEndpoints = [
-  // playlistsApi.endpoints.fetchPlaylists.name,
-  // tracksApi.endpoints.fetchTracks.name,
   moviesApi.endpoints.fetchMoviesByCategory.name,
+  configApi.endpoints.getConfig.name,
 ]
 
 export const useGlobalLoading = () => {
@@ -15,7 +15,6 @@ export const useGlobalLoading = () => {
     const queries = Object.values(state.baseApi.queries || {})
     const mutations = Object.values(state.baseApi.mutations || {})
 
-    // Проверяем, есть ли активные запросы (статус 'pending')
     const hasActiveQueries = queries.some(query => {
       if (query?.status !== 'pending') return
       if (excludedEndpoints.includes(query.endpointName)) {

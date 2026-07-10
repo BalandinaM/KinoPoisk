@@ -38,8 +38,8 @@ export const FilteredMovies = () => {
     vote_average_lte: debounceRating[1],
     page: currentPage,
   })
-  console.log(genresData)
-  console.log(moviesSorted)
+  // console.log(genresData)
+  // console.log(moviesSorted)
 
   const handleGenreToggle = (genreId: number) => {
     setGenres(prev =>
