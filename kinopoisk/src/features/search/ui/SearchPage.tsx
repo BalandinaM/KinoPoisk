@@ -5,6 +5,7 @@ import { SearchInput } from './searchInput'
 import s from './SearchPage.module.css'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@/common/components/pagination/Pagination'
+import { MoviesSectionSkeleton } from '@/common/components/moviesSection/moviesSectionSkeleton'
 
 export const SearchPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -31,7 +32,13 @@ export const SearchPage = () => {
   return (
     <div className={s.wrap}>
       <SearchInput setCurrentPage={setCurrentPage} />
-      {isLoading && <p>Загрузка...</p>}
+      {isLoading && (
+        <MoviesSectionSkeleton
+          variant="default"
+          count={20}
+          structureVariant="noHeader"
+        />
+      )}
       {searchResult?.results.length != 0 ? (
         <>
           <MoviesSection
