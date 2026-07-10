@@ -16,9 +16,10 @@ import { Pagination } from '@/common/components/pagination/Pagination'
 import { PAGINATION } from '@/common/constants'
 
 export const FilteredMovies = () => {
-  const { data: genresData } = useFetchGenreMovieListQuery({
-    language: 'ru-RU',
-  })
+  const { data: genresData, isLoading: isLoadingGenres } =
+    useFetchGenreMovieListQuery({
+      language: 'ru-RU',
+    })
   const [sort, setSort] = useState<SortOption>(initialStateFilter.sort)
   const [genres, setGenres] = useState<number[]>(initialStateFilter.genres)
   const [ratingRange, setRatingRange] = useState<[number, number]>([
@@ -38,8 +39,6 @@ export const FilteredMovies = () => {
     vote_average_lte: debounceRating[1],
     page: currentPage,
   })
-  // console.log(genresData)
-  // console.log(moviesSorted)
 
   const handleGenreToggle = (genreId: number) => {
     setGenres(prev =>
@@ -72,6 +71,7 @@ export const FilteredMovies = () => {
           genres={genresData?.genres}
           selectedGenres={genres}
           handleGenreToggle={handleGenreToggle}
+          isLoading={isLoadingGenres}
         />
         <button className={s.resetButton} onClick={handleResetFilters}>
           Сбросить фильтры
