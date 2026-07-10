@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: async (args, api, extraOptions) => {
-    await new Promise(resolve => setTimeout(resolve, 5000)) // delay
+    // await new Promise(resolve => setTimeout(resolve, 5000)) // delay
     const result = await fetchBaseQuery({
       baseUrl: import.meta.env.VITE_BASE_URL,
       headers: {

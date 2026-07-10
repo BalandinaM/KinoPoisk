@@ -11,22 +11,32 @@ const excludedEndpoints = [
 
 export const useGlobalLoading = () => {
   return useSelector((state: RootState) => {
-    // Получаем все активные запросы из RTK Query API
     const queries = Object.values(state.baseApi.queries || {})
-    const mutations = Object.values(state.baseApi.mutations || {})
 
-    const hasActiveQueries = queries.some(query => {
-      if (query?.status !== 'pending') return
-      if (excludedEndpoints.includes(query.endpointName)) {
-        const completedQueries = queries.filter(q => q?.status === 'fulfilled')
-        return completedQueries.length > 0
-      }
-    })
-
-    const hasActiveMutations = mutations.some(
-      mutation => mutation?.status === 'pending'
+    console.log(
+      '📊 Все запросы:',
+      queries.map(q => ({
+        endpointName: q?.endpointName,
+        status: q?.status,
+      }))
     )
 
-    return hasActiveQueries || hasActiveMutations
+    const hasActiveQueries = queries.some(query => {
+      // 1. Если запрос не в статусе 'pending' — пропускаем
+      if (query?.status !== 'pending') return false
+
+      // 2. Если эндпоинт в исключениях — возвращаем false (не показываем лоадер)
+      if (excludedEndpoints.includes(query.endpointName)) {
+        console.log('⚠️ Исключён:', query.endpointName)
+        return false // ← ✅ просто false!
+      }
+
+      // 3. Все остальные 'pending' запросы — показываем лоадер
+      console.log('✅ Активен:', query.endpointName)
+      return true // ← ✅ раскомментировать!
+    })
+
+    console.log('🔍 hasActiveQueries:', hasActiveQueries)
+    return hasActiveQueries
   })
 }

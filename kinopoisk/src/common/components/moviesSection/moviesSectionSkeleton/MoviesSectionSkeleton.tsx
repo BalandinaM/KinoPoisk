@@ -6,20 +6,24 @@ import s from './MoviesSectionSkeleton.module.css'
 type Props = {
   count?: number
   variant?: 'default' | 'limitShow'
+  structureVariant?: 'default' | 'noHeader'
 }
 
 export const MoviesSectionSkeleton = ({
   count = 6,
   variant = 'limitShow',
+  structureVariant = 'default',
 }: Props) => {
   const listClass = variant === 'limitShow' ? s.listLimitShow : s.listDefault
 
   return (
     <section className={s.section}>
-      <div className={s.header}>
-        <Skeleton width={200} height={32} className={s.skeletonTitle} />
-        <Skeleton width={120} height={36} className={s.skeletonViewMore} />
-      </div>
+      {structureVariant === 'default' && (
+        <div className={s.header}>
+          <Skeleton width={200} height={32} className={s.skeletonTitle} />
+          <Skeleton width={120} height={36} className={s.skeletonViewMore} />
+        </div>
+      )}
       <div className={`${s.list} ${listClass}`}>
         {Array.from({ length: count }).map((_, index) => (
           <div key={index} className={s.card}>

@@ -4,7 +4,7 @@ import {
   useFetchSortedMoviesQuery,
 } from '@/app/api/endpoints/filterApi'
 import type { SortOption } from '@/app/api/types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { initialStateFilter } from '../model'
 import { MoviesSection } from '@/common/components/moviesSection'
 import { RatingSlider } from './ratingSlider'
@@ -39,6 +39,10 @@ export const FilteredMovies = () => {
     vote_average_lte: debounceRating[1],
     page: currentPage,
   })
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [currentPage])
 
   const handleGenreToggle = (genreId: number) => {
     setGenres(prev =>
@@ -78,7 +82,11 @@ export const FilteredMovies = () => {
         </button>
       </div>
       {isLoading ? (
-        <MoviesSectionSkeleton variant="default" count={20} />
+        <MoviesSectionSkeleton
+          variant="default"
+          count={20}
+          structureVariant="noHeader"
+        />
       ) : (
         <>
           <MoviesSection movies={moviesSorted?.results} />
