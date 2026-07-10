@@ -1,4 +1,3 @@
-// common/components/moviesSection/MoviesSectionSkeleton.tsx
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import s from './MoviesSectionSkeleton.module.css'

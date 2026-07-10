@@ -21,10 +21,10 @@ export const MainPage = () => {
 
   return (
     <>
-      {/* <WelcomeSkeleton /> */}
       <WelcomeSection movies={popular.results} />
       <div className={s.wrap}>
         <MoviesSection
+          key={MoviesCategory.NowPlaying}
           sectionTitle={getCategoryTitle(MoviesCategory.NowPlaying)}
           movies={nowPlaying.results}
           link={`/movies/${MoviesCategory.NowPlaying}`}
@@ -32,6 +32,7 @@ export const MainPage = () => {
           variant="limitShow"
         />
         <MoviesSection
+          key={MoviesCategory.Popular}
           sectionTitle={getCategoryTitle(MoviesCategory.Popular)}
           movies={popular.results}
           link={`/movies/${MoviesCategory.Popular}`}
@@ -39,6 +40,7 @@ export const MainPage = () => {
           variant="limitShow"
         />
         <MoviesSection
+          key={MoviesCategory.TopRated}
           sectionTitle={getCategoryTitle(MoviesCategory.TopRated)}
           movies={topRated.results}
           link={`/movies/${MoviesCategory.TopRated}`}
@@ -46,6 +48,7 @@ export const MainPage = () => {
           variant="limitShow"
         />
         <MoviesSection
+          key={MoviesCategory.Upcoming}
           sectionTitle={getCategoryTitle(MoviesCategory.Upcoming)}
           movies={upcoming.results}
           link={`/movies/${MoviesCategory.Upcoming}`}

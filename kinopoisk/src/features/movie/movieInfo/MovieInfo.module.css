@@ -3,11 +3,8 @@
   gap: var(--space-xl);
   padding: var(--space-lg) 0;
   align-items: flex-start;
-  /* max-width: 1200px;
-  margin: 0 auto; */
 }
 
-/* ===== Постер ===== */
 .wrapImg {
   flex-shrink: 0;
   width: 280px;
@@ -22,7 +19,6 @@
   display: block;
 }
 
-/* ===== Информация ===== */
 .wrapInfo {
   flex: 1;
   display: flex;
@@ -65,7 +61,6 @@
   border: none;
 }
 
-/* ===== Детали ===== */
 .details {
   display: flex;
   flex-wrap: wrap;
@@ -85,7 +80,6 @@
   font-weight: 600;
 }
 
-/* ===== Описание ===== */
 .overview {
   font-size: var(--font-md);
   line-height: 1.6;
@@ -94,7 +88,6 @@
   text-align: left;
 }
 
-/* ===== Жанры ===== */
 .genresWrap {
   display: flex;
   flex-direction: column;
@@ -127,7 +120,6 @@
   border: 1px solid var(--color-border);
 }
 
-/* ===== Адаптив ===== */
 @media (max-width: 1024px) {
   .movieInfo {
     gap: var(--space-lg);

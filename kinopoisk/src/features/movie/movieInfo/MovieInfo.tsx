@@ -20,14 +20,10 @@ export const MovieInfo = ({
   },
 }: Props) => {
   const navigate = useNavigate()
-  const { getPosterUrl, isLoading } = useImageUrl()
+  const { getPosterUrl } = useImageUrl()
   const posterUrl = getPosterUrl(poster_path, 'w342')
   const yearRelease = getYear(release_date)
   const runTime = getRuntime(runtime)
-
-  if (isLoading) {
-    return <div>Загрузка...</div>
-  }
 
   return (
     <div className={s.movieInfo}>
@@ -43,9 +39,6 @@ export const MovieInfo = ({
       <div className={s.wrapInfo}>
         <div className={s.wrapTitle}>
           <h3 className={s.title}>{title}</h3>
-          {/* <span className={s.linkBack}>
-            <a href="#">Назад</a>
-          </span> */}
           <button className={s.button} onClick={() => navigate(-1)}>
             Назад
           </button>

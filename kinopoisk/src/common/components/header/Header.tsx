@@ -1,7 +1,7 @@
 import s from './Header.module.css'
-import { Logo } from './logo/Logo'
-import { NavMenu } from './navMenu/NavMenu'
-import { ThemeToggle } from './themeToggle/ThemeToggle'
+import { Logo } from './logo'
+import { NavMenu } from './navMenu'
+import { ThemeToggle } from './themeToggle'
 
 export const Header = () => {
   return (

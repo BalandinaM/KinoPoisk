@@ -11,12 +11,8 @@ type Props = {
 }
 
 export const MoviePreview = ({ movie }: Props) => {
-  const { getPosterUrl, isLoading } = useImageUrl()
+  const { getPosterUrl } = useImageUrl()
   const { isFavorite, toggle } = useFavorite()
-
-  // if (isLoading || !movie) {
-  //   return <div>Загрузка...</div>
-  // }
 
   const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()

@@ -1,5 +1,3 @@
-/* common/components/moviesSection/MoviesSectionSkeleton.module.css */
-
 .section {
   margin-bottom: 40px;
 }
@@ -70,7 +68,6 @@
   align-self: flex-start;
 }
 
-/* ===== Адаптив ===== */
 @media (max-width: 1024px) {
   .list {
     gap: var(--space-sm);

@@ -1,6 +1,6 @@
 import { useFetchMoviesByCategoryQuery } from '@/app/api/endpoints/moviesApi'
 import { useParams } from 'react-router-dom'
-import { CategoryMenu } from './CategoryMenu/CategoryMenu'
+import { CategoryMenu } from './categoryMenu'
 import s from './CategoryPage.module.css'
 import { getCategoryTitle } from '../api/constants'
 import { useEffect, useState } from 'react'

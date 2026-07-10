@@ -6,9 +6,10 @@ import s from './SearchPage.module.css'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@/common/components/pagination/Pagination'
 import { MoviesSectionSkeleton } from '@/common/components/moviesSection/moviesSectionSkeleton'
+import { PAGINATION } from '@/common/constants'
 
 export const SearchPage = () => {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(PAGINATION.DEFAULT_PAGE)
   const [searchParams] = useSearchParams()
   const query = searchParams.get('query')
 

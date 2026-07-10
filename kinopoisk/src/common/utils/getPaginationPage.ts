@@ -1,8 +1,5 @@
 const SIBLING_COUNT = 1
 
-/**
- * Генерирует массив страниц для отображения пагинации с многоточиями
- */
 export const getPaginationPages = (
   currentPage: number,
   pagesCount: number

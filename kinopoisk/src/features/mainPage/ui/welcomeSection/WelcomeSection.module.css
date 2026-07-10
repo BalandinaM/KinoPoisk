@@ -49,7 +49,6 @@
   line-height: 1.5;
 }
 
-/* ===== Адаптив ===== */
 @media (max-width: 768px) {
   .section {
     min-height: 400px;

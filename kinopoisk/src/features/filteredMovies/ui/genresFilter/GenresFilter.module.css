@@ -6,13 +6,6 @@
   justify-content: center;
 }
 
-/* .wrap {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-} */
-
 .button {
   padding: var(--space-sm) var(--space-md);
   background-color: transparent;

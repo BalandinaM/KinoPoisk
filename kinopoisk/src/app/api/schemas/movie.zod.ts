@@ -71,7 +71,7 @@ export const movieDetailsSchema = z.object({
     })
     .nullable(),
   budget: z.number(),
-  genres: z.array(genreSchema), // ← ОБЯЗАТЕЛЬНО массив (не optional!)
+  genres: z.array(genreSchema),
   homepage: z.string().nullable(),
   id: z.number(),
   imdb_id: z.string().nullable(),
@@ -86,7 +86,7 @@ export const movieDetailsSchema = z.object({
   release_date: z.string(),
   revenue: z.number(),
   runtime: z.number(),
-  softcore: z.boolean().optional(), // ← если это поле не всегда есть
+  softcore: z.boolean().optional(),
   spoken_languages: z.array(spokenLanguageSchema),
   status: z.string(),
   tagline: z.string().nullable(),

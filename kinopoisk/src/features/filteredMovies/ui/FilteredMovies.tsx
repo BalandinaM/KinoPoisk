@@ -93,7 +93,7 @@ export const FilteredMovies = () => {
           <Pagination
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-            pagesCount={moviesSorted?.total_pages || 1}
+            pagesCount={moviesSorted?.total_pages || PAGINATION.DEFAULT_PAGE}
           />
         </>
       )}

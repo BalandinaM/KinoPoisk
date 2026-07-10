@@ -5,13 +5,11 @@ import { isTmdbError } from './isTmdbErrors'
 export const handleErrors = (error: FetchBaseQueryError) => {
   if (!error) return
 
-  // 1. Ошибки TMDB (все, включая 404, 429, 500 и т.д.)
   if (error.data && isTmdbError(error.data)) {
     errorToast(error.data.status_message)
     return
   }
 
-  // 2. Технические ошибки (сеть, парсинг, таймаут)
   if (
     error.status === 'FETCH_ERROR' ||
     error.status === 'PARSING_ERROR' ||
@@ -22,6 +20,5 @@ export const handleErrors = (error: FetchBaseQueryError) => {
     return
   }
 
-  // 3. Всё остальное (страховка)
   errorToast('Something went wrong. Please try again later.')
 }

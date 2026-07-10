@@ -60,11 +60,6 @@ export type DiscoverParams = BaseParams & {
   vote_average_gte?: number
   vote_average_lte?: number
   with_genres?: string
-  // without_genres?: string
-  // year?: number
-  // primary_release_year?: number
-  // with_original_language?: string
-  // include_adult?: boolean
 }
 
 // ===== Для деталей фильма =====

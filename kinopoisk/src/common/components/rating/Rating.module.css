@@ -16,15 +16,14 @@
   z-index: 1;
 }
 
-/* Цвета рейтинга */
 .rating[data-rating='low'] {
-  --rating-color: #e74c3c; /* красный */
+  --rating-color: #e74c3c;
 }
 
 .rating[data-rating='medium'] {
-  --rating-color: #f39c12; /* оранжевый */
+  --rating-color: #f39c12;
 }
 
 .rating[data-rating='high'] {
-  --rating-color: #2ecc71; /* зелёный */
+  --rating-color: #2ecc71;
 }

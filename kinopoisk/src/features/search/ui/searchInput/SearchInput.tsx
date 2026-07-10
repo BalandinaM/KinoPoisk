@@ -1,4 +1,4 @@
-import { Path } from '@/common/constants'
+import { PAGINATION, Path } from '@/common/constants'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import s from './SearchInput.module.css'
@@ -12,7 +12,7 @@ export const SearchInput = ({ setCurrentPage }: Props) => {
   const navigate = useNavigate()
 
   const handleSearch = () => {
-    setCurrentPage?.(1)
+    setCurrentPage?.(PAGINATION.DEFAULT_PAGE)
     if (search.trim()) {
       navigate(`${Path.Search}?query=${search}`)
     }
@@ -20,13 +20,13 @@ export const SearchInput = ({ setCurrentPage }: Props) => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      setCurrentPage?.(1)
+      setCurrentPage?.(PAGINATION.DEFAULT_PAGE)
       handleSearch()
     }
   }
 
   const handleClear = () => {
-    setCurrentPage?.(1)
+    setCurrentPage?.(PAGINATION.DEFAULT_PAGE)
     setSearch('')
     navigate(`${Path.Search}`)
   }

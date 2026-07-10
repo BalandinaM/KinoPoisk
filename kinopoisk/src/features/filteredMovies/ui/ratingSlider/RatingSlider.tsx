@@ -15,12 +15,12 @@ export const RatingSlider = ({ value, onChange }: Props) => {
       </p>
       <div style={{ width: '100%' }}>
         <Range
-          values={value} // ← массив из двух чисел
+          values={value}
           step={RATING.STEP}
           min={RATING.MIN}
           max={RATING.MAX}
           onChange={values => {
-            console.log('onChange вызван:', values) // ← проверка
+            console.log('onChange вызван:', values)
             onChange(values as [number, number])
           }}
           renderTrack={({ props, children }) => (
@@ -68,10 +68,6 @@ export const RatingSlider = ({ value, onChange }: Props) => {
             />
           )}
         />
-        {/* <div className={s.values}>
-          <span>{value[0].toFixed(1)}</span>
-          <span>{value[1].toFixed(1)}</span>
-        </div> */}
       </div>
     </div>
   )

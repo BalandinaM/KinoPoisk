@@ -13,7 +13,6 @@
   transform: translateY(-4px);
 }
 
-/* ===== Обёртка для картинки ===== */
 .imageWrapper {
   position: relative;
   width: 100%;
@@ -30,7 +29,6 @@
   display: block;
 }
 
-/* ===== Кнопка избранного ===== */
 .favoriteButton {
   position: absolute;
   top: var(--space-sm);
@@ -72,23 +70,21 @@
   background-color: rgba(231, 76, 60, 0.9);
 }
 
-/* ===== Название фильма ===== */
 .title {
   padding: var(--space-sm) var(--space-sm) var(--space-md);
   font-size: var(--font-sm);
   font-weight: 600;
   color: var(--color-text);
   margin: 0;
-  text-align: left; /* ← выравнивание по левому краю */
+  text-align: left;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.3;
-  flex: 1; /* ← занимает оставшееся место */
+  flex: 1;
 }
 
-/* ===== Ссылка ===== */
 .link {
   display: block;
   text-decoration: none;
@@ -98,7 +94,6 @@
   flex-direction: column;
 }
 
-/* ===== Адаптив ===== */
 @media (max-width: 768px) {
   .rating {
     width: 30px;

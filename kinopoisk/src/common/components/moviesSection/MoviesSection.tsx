@@ -36,7 +36,7 @@ export const MoviesSection = ({
         className={`${s.list} ${variant === 'limitShow' ? s.listLimitShow : ''}`}
       >
         {moviesToShow?.map(movie => {
-          return <MoviePreview movie={movie} />
+          return <MoviePreview movie={movie} key={movie.id} />
         })}
       </div>
     </section>

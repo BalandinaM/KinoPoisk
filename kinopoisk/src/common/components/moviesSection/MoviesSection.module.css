@@ -16,7 +16,6 @@
   margin: 0;
 }
 
-/* это надо вообще вынести в отдельный компонент, она мне пригодится много где */
 .viewMore {
   font-size: 14px;
   font-weight: 600;
@@ -48,11 +47,10 @@
 }
 
 .listLimitShow {
-  grid-template-columns: repeat(6, 1fr); /* 6 колонок только для главной */
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--space-md);
 }
 
-/* Адаптив */
 @media (max-width: 1200px) {
   .list {
     grid-template-columns: repeat(5, 1fr);

@@ -1,8 +1,8 @@
 .wrapper {
   display: flex;
   align-items: center;
-  width: 500px; /* ← фиксированная ширина */
-  max-width: 100%; /* ← чтобы не вылезал за экран на мобилках */
+  width: 500px;
+  max-width: 100%;
   margin: 0 auto;
   border-radius: var(--radius-md);
   background-color: rgba(255, 255, 255, 0.15);
@@ -10,7 +10,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: var(--transition);
   overflow: hidden;
-  flex-shrink: 0; /* ← чтобы не сжимался */
+  flex-shrink: 0;
 }
 
 .wrapper:focus-within {
@@ -21,7 +21,7 @@
 
 .input {
   flex: 1;
-  min-width: 0; /* ← убираем ограничение */
+  min-width: 0;
   padding: 8px 14px;
   background: transparent;
   border: none;
@@ -88,7 +88,6 @@
   cursor: not-allowed;
 }
 
-/* ===== Адаптив ===== */
 @media (max-width: 768px) {
   .input {
     padding: 6px 12px;

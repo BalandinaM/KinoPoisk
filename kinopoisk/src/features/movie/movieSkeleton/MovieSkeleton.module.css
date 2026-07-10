@@ -106,7 +106,6 @@
   border-radius: var(--radius-lg);
 }
 
-/* ===== Адаптив ===== */
 @media (max-width: 1024px) {
   .castListSkeleton {
     grid-template-columns: repeat(4, 1fr);

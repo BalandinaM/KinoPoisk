@@ -36,7 +36,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  border-radius: var(--radius-lg); /* ← скругление всех углов */
+  border-radius: var(--radius-lg);
   background-color: var(--color-bg);
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
@@ -79,7 +79,6 @@
   overflow: hidden;
 }
 
-/* ===== Адаптив ===== */
 @media (max-width: 1024px) {
   .list {
     grid-template-columns: repeat(4, 1fr);

@@ -1,9 +1,4 @@
 .container {
-  /* border-bottom: 1px solid black;
-  padding: 0 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; */
   padding: 16px 24px;
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--color-border);
@@ -13,10 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* height: var(--header-height); */
-
   color: var(--header-text);
-
   position: sticky;
   top: 0;
   z-index: 1000;

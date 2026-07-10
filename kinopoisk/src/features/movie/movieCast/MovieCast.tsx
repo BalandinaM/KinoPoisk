@@ -10,7 +10,6 @@ export const MovieCast = ({ credits }: Props) => {
   const { getPosterUrl } = useImageUrl()
   const topActors = credits.slice(0, 6)
 
-  console.log(topActors)
   return (
     <div className={s.castSection}>
       <h3 className={s.title}>В главных ролях</h3>
