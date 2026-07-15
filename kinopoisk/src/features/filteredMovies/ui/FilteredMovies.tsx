@@ -61,6 +61,9 @@ export const FilteredMovies = () => {
           params.set(key, String(value))
         }
       })
+
+      params.set('page', String(PAGINATION.DEFAULT_PAGE))
+
       return params
     })
   }
@@ -81,6 +84,14 @@ export const FilteredMovies = () => {
       ? genres.filter(id => id !== genreId)
       : [...genres, genreId]
     updateFilters({ genres: newGenres })
+  }
+
+  const handlePageChange = (page: number) => {
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev)
+      params.set('page', String(page))
+      return params
+    })
   }
 
   const handleResetFilters = () => {
@@ -123,7 +134,7 @@ export const FilteredMovies = () => {
           <MoviesSection movies={moviesSorted?.results} />
           <Pagination
             currentPage={currentPage}
-            setCurrentPage={page => updateFilters({ page })}
+            setCurrentPage={page => handlePageChange(page)}
             pagesCount={moviesSorted?.total_pages || PAGINATION.DEFAULT_PAGE}
           />
         </>
