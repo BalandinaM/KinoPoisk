@@ -4,7 +4,7 @@ import {
   useFetchSortedMoviesQuery,
 } from '@/app/api/endpoints/filterApi'
 import type { SortOption } from '@/app/api/types'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { initialStateFilter } from '../model'
 import { MoviesSection } from '@/common/components/moviesSection'
 import { RatingSlider } from './ratingSlider'
@@ -14,19 +14,26 @@ import { GenresFilter } from './genresFilter'
 import { MoviesSectionSkeleton } from '@/common/components/moviesSection/moviesSectionSkeleton'
 import { Pagination } from '@/common/components/pagination/Pagination'
 import { PAGINATION } from '@/common/constants'
+import { useSearchParams } from 'react-router-dom'
 
 export const FilteredMovies = () => {
   const { data: genresData, isLoading: isLoadingGenres } =
     useFetchGenreMovieListQuery({
       language: 'ru-RU',
     })
-  const [sort, setSort] = useState<SortOption>(initialStateFilter.sort)
-  const [genres, setGenres] = useState<number[]>(initialStateFilter.genres)
-  const [ratingRange, setRatingRange] = useState<[number, number]>([
-    initialStateFilter.ratingGte,
-    initialStateFilter.ratingLte,
-  ])
-  const [currentPage, setCurrentPage] = useState(PAGINATION.DEFAULT_PAGE)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const sort =
+    (searchParams.get('sort') as SortOption) || initialStateFilter.sort
+  const genres =
+    searchParams.get('genres')?.split(',').map(Number) ||
+    initialStateFilter.genres
+  const ratingMin =
+    Number(searchParams.get('ratingMin')) || initialStateFilter.ratingGte
+  const ratingMax =
+    Number(searchParams.get('ratingMax')) || initialStateFilter.ratingLte
+  const ratingRange: [number, number] = [ratingMin, ratingMax]
+  const currentPage =
+    Number(searchParams.get('page')) || PAGINATION.DEFAULT_PAGE
 
   const debounceSort = useDebounceValue(sort)
   const debounceRating = useDebounceValue(ratingRange)
@@ -40,34 +47,58 @@ export const FilteredMovies = () => {
     page: currentPage,
   })
 
+  const updateFilters = (
+    updates: Record<string, string | number | number[]>
+  ) => {
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev)
+      Object.entries(updates).forEach(([key, value]) => {
+        if (value === undefined || value === null || value === '') {
+          params.delete(key)
+        } else if (Array.isArray(value)) {
+          params.set(key, value.join(','))
+        } else {
+          params.set(key, String(value))
+        }
+      })
+      return params
+    })
+  }
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [currentPage])
 
+  const handleRatingChange = (newRange: [number, number]) => {
+    updateFilters({
+      ratingMin: newRange[0],
+      ratingMax: newRange[1],
+    })
+  }
+
   const handleGenreToggle = (genreId: number) => {
-    setGenres(prev =>
-      prev.includes(genreId)
-        ? prev.filter(id => id !== genreId)
-        : [...prev, genreId]
-    )
+    const newGenres = genres.includes(genreId)
+      ? genres.filter(id => id !== genreId)
+      : [...genres, genreId]
+    updateFilters({ genres: newGenres })
   }
 
   const handleResetFilters = () => {
-    setSort(initialStateFilter.sort)
-    setGenres(initialStateFilter.genres)
-    setRatingRange([initialStateFilter.ratingGte, initialStateFilter.ratingLte])
-    setCurrentPage(PAGINATION.DEFAULT_PAGE)
+    setSearchParams({})
   }
 
   return (
     <div className={s.wrap}>
       <div className={s.wrapFilters}>
         <div className={s.wrapSortAndRating}>
-          <SortFilter sort={sort} setSort={setSort} />
+          <SortFilter
+            sort={sort}
+            setSort={newSort => updateFilters({ sort: newSort })}
+          />
           <RatingSlider
             value={ratingRange}
             onChange={newValue => {
-              setRatingRange(newValue)
+              handleRatingChange(newValue)
             }}
           />
         </div>
@@ -92,7 +123,7 @@ export const FilteredMovies = () => {
           <MoviesSection movies={moviesSorted?.results} />
           <Pagination
             currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={page => updateFilters({ page })}
             pagesCount={moviesSorted?.total_pages || PAGINATION.DEFAULT_PAGE}
           />
         </>
