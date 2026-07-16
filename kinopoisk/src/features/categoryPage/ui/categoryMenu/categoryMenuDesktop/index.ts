@@ -1,0 +1,1 @@
+export { CategoryMenuDesktop } from './CategoryMenuDesktop'

@@ -1,0 +1,1 @@
+export { CategoryMenuMobile } from './CategoryMenuMobile';

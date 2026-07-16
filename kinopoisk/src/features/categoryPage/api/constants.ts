@@ -21,3 +21,10 @@ export const getCategoryTitle = (category: string): string => {
   }
   return category
 }
+
+export const categoryItems = [
+  { to: MoviesCategory.NowPlaying, label: 'Сейчас в прокате' },
+  { to: MoviesCategory.Popular, label: 'Популярные фильмы' },
+  { to: MoviesCategory.TopRated, label: 'С высоким рейтингом' },
+  { to: MoviesCategory.Upcoming, label: 'Скоро в прокате' },
+]

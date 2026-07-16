@@ -8,18 +8,21 @@
   width: 100%;
   border-inline: none;
   min-height: 100vh;
+  min-width: 320px;
 }
 
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 320px;
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-family);
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+  overflow-x: hidden;
 }
 
 .main-content {
@@ -54,4 +57,11 @@ ol {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media (max-width: 320px) {
+  .app {
+    overflow-x: auto; /* появляется скролл */
+    min-width: 320px;
+  }
 }

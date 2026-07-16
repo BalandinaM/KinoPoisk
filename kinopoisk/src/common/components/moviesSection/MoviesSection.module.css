@@ -69,13 +69,19 @@
     gap: 12px;
   }
 
+  .listLimitShow {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
   .title {
     font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .list {
+  .list,
+  .listLimitShow {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }

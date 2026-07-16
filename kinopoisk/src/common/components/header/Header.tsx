@@ -8,8 +8,6 @@ export const Header = () => {
     query: '(max-width: 768px)',
   })
 
-  console.log(isLaptop)
-
   return (
     <div className={s.container}>
       <header>{isLaptop ? <MobileMenu /> : <DesktopMenu />}</header>
