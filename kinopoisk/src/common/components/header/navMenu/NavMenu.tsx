@@ -10,7 +10,11 @@ const navItems = [
   { to: Path.Favorites, label: 'Избранное' },
 ]
 
-export const NavMenu = () => {
+type Props = {
+  closeMenu?: (arg: boolean) => void
+}
+
+export const NavMenu = ({ closeMenu }: Props) => {
   const location = useLocation()
   return (
     <nav className={s.nav}>
@@ -25,6 +29,7 @@ export const NavMenu = () => {
               <NavLink
                 to={item.to}
                 className={`${s.link} ${isActive ? s.activeLink : ''}`}
+                onClick={() => closeMenu?.(false)}
               >
                 {item.label}
               </NavLink>

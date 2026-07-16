@@ -16,7 +16,7 @@ export const MobileMenu = () => {
         <Logo />
         <ThemeToggle />
       </div>
-      {isOpenMenu && <NavMenu />}
+      {isOpenMenu && <NavMenu closeMenu={setIsOpenMenu} />}
     </div>
   )
 }
