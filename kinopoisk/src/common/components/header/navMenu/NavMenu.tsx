@@ -4,8 +4,8 @@ import s from './NavMenu.module.css'
 
 const navItems = [
   { to: Path.Main, label: 'Главная' },
-  { to: Path.PopularMovies, label: 'Фильмы по категориям' },
-  { to: Path.FilteredMovies, label: 'Отфильтровать фильмы' },
+  { to: Path.PopularMovies, label: 'Категории' },
+  { to: Path.FilteredMovies, label: 'Фильтрация' },
   { to: Path.Search, label: 'Поиск' },
   { to: Path.Favorites, label: 'Избранное' },
 ]
@@ -13,7 +13,7 @@ const navItems = [
 export const NavMenu = () => {
   const location = useLocation()
   return (
-    <nav>
+    <nav className={s.nav}>
       <ul className={s.list}>
         {navItems.map(item => {
           const isActive =

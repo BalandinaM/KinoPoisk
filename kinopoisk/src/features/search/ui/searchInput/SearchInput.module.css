@@ -19,6 +19,10 @@
   box-shadow: 0 0 0 2px rgba(1, 180, 228, 0.2);
 }
 
+/* .title {
+  color: var(--color-text-white);
+} */
+
 .input {
   flex: 1;
   min-width: 0;

@@ -1,16 +1,18 @@
+import { DesktopMenu } from './desktopMenu'
 import s from './Header.module.css'
-import { Logo } from './logo'
-import { NavMenu } from './navMenu'
-import { ThemeToggle } from './themeToggle'
+import { useMediaQuery } from 'react-responsive'
+import { MobileMenu } from './mobileMenu'
 
 export const Header = () => {
+  const isLaptop = useMediaQuery({
+    query: '(max-width: 768px)',
+  })
+
+  console.log(isLaptop)
+
   return (
     <div className={s.container}>
-      <header className={s.header}>
-        <Logo />
-        <NavMenu />
-        <ThemeToggle />
-      </header>
+      <header>{isLaptop ? <MobileMenu /> : <DesktopMenu />}</header>
     </div>
   )
 }

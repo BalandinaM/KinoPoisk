@@ -23,3 +23,28 @@
   background-color: rgba(255, 255, 255, 0.2);
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+  .nav {
+    padding-top: var(--space-xs);
+    width: 100%;
+  }
+
+  .list {
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* gap: var(--space-md); */
+    width: 100%;
+    gap: 0;
+  }
+
+  .list li {
+    width: 100%;
+  }
+
+  .link {
+    display: inline-block;
+    width: 100%;
+    border-radius: 0;
+  }
+}

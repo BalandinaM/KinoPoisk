@@ -33,7 +33,7 @@ export const SearchInput = ({ setCurrentPage }: Props) => {
 
   return (
     <div>
-      <h3>Введите название фильма для поиска</h3>
+      <h3 className={s.title}>Введите название фильма для поиска</h3>
       <div className={s.wrapper}>
         <input
           name="search"
